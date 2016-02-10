@@ -12,6 +12,7 @@ using MongoDB.Bson;
 using Newtonsoft.Json;
 using MongoDB.Bson.IO;
 using MongoDB.Driver.GridFS;
+using MongoDB.Driver.Linq;
 using System.IO;
 using MongoDB.Driver.Builders;
 using System.Media;
@@ -419,15 +420,43 @@ namespace MongoDriverTest
 
         private void button12_Click(object sender, EventArgs e)
         {
-            
+
+            FIzborReprezentacijaZaUtakmicu firzu = new FIzborReprezentacijaZaUtakmicu();
+            firzu.ShowDialog();
+            /*try
+            {
+                var client = new MongoClient("mongodb://localhost");
+                var database = client.GetDatabase("docs");
+                var fs = new GridFSBucket(database);
+
+                // ------ Brisanje iz GridFS-a
+                var server = client.GetServer();
+                var database2 = server.GetDatabase("docs");
+                var gridFs = new MongoGridFS(database2);
+                gridFs.Delete("Srbijazastava");
+                //Object id = "Srbijazastava";
+                
+
+                //-----------------
+
+                var data = fs.DownloadAsBytesByName("Srbijazastava");
+
+                MemoryStream stream = new MemoryStream(data);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }*/
         }
 
         private void infoFormaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Reprezentacija r1 = new Reprezentacija();
-            r1.Ime = "Srbija";           
+            r1.Ime = "Srbija";
             Reprezentacija r2 = new Reprezentacija();
-            r2.Ime = "Nemacka";           
+            r2.Ime = "Nemacka";
             Stadion s1 = new Stadion();
             s1.Ime = "Test";
             FInfoZaMec test = new FInfoZaMec(r1,r2,s1);

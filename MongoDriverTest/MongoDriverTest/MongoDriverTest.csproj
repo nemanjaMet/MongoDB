@@ -65,11 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="AuxLib.cs" />
-
     <Compile Include="AlgoritamSimulacije.cs" />
-
     <Compile Include="Book.cs" />
     <Compile Include="FDodavanjeStadiona.cs">
       <SubType>Form</SubType>
@@ -103,7 +100,6 @@
     <Compile Include="FDodavanjeIgraca.Designer.cs">
       <DependentUpon>FDodavanjeIgraca.cs</DependentUpon>
     </Compile>
-
     <Compile Include="FInfoZaMec.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,7 +111,12 @@
     </Compile>
     <Compile Include="FFudbalskaIgra.Designer.cs">
       <DependentUpon>FFudbalskaIgra.cs</DependentUpon>
-
+    </Compile>
+    <Compile Include="FIzborReprezentacijaZaUtakmicu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FIzborReprezentacijaZaUtakmicu.Designer.cs">
+      <DependentUpon>FIzborReprezentacijaZaUtakmicu.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -151,13 +152,14 @@
     <EmbeddedResource Include="FDodavanjeTrenera.resx">
       <DependentUpon>FDodavanjeTrenera.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="FInfoZaMec.resx">
       <DependentUpon>FInfoZaMec.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="FFudbalskaIgra.resx">
       <DependentUpon>FFudbalskaIgra.cs</DependentUpon>
-
+    </EmbeddedResource>
+    <EmbeddedResource Include="FIzborReprezentacijaZaUtakmicu.resx">
+      <DependentUpon>FIzborReprezentacijaZaUtakmicu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -70,7 +70,7 @@ namespace MongoDriverTest
         private void button4_Click(object sender, EventArgs e)
         {
             // PROVERAVA PO IMENU AKO IME NIJE UNIQUE NECE MOCI DVA SA ISTIM IMENOM U SASTAV
-            if (this.LvIgraci.SelectedItems.Count != 0)
+            /*if (this.LvIgraci.SelectedItems.Count != 0)
             {
                 if(this.LVSastav.Items.Count == 30)
                 {
@@ -91,15 +91,34 @@ namespace MongoDriverTest
                     var klon = test.Clone();
                     this.LVSastav.Items.Add((ListViewItem)klon);
                 }
+            }*/
+    
+            // Multiple select
+            if (this.LvIgraci.SelectedItems.Count > 0)
+            {
+                foreach (ListViewItem ListItem in this.LvIgraci.Items)
+                {
+                    if (ListItem.Selected == true)
+                    {
+                        var klon = ListItem.Clone(); ;
+                       /* if (!LVSastav.Items.Contains((ListViewItem)klon))
+                        {
+                            this.LVSastav.Items.Add((ListViewItem)klon);
+                        }*/
+                        ListViewItem duplikat = LVSastav.FindItemWithText(ListItem.Text);
+                         if (duplikat == null)
+                         {
+                             this.LVSastav.Items.Add((ListViewItem)klon);
+                         }
+                    }
+                }
             }
-            
-
             
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (this.LVSastav.SelectedItems.Count != 0)
+           /* if (this.LVSastav.SelectedItems.Count != 0)
             {
                 for (int i = 0; i < this.LVSastav.Items.Count; i++)
                 {
@@ -109,6 +128,15 @@ namespace MongoDriverTest
                     }
                 }
                 
+            }*/
+
+            if (this.LVSastav.SelectedItems.Count != 0)
+            {
+                this.LVSastav.SelectedItems[0].Remove();
+            }
+            else
+            {
+                MessageBox.Show("Selektuj igraca kog hoces da izbacis iz sastava!");
             }
             
         }
@@ -181,6 +209,15 @@ namespace MongoDriverTest
                 MessageBox.Show("Morate izabrati kapitena!");
                 return;
             }
+            if (elKapetano != null)
+            {
+                ListViewItem kapitenNijeUlistu = LVSastav.FindItemWithText(elKapetano._id.ToString());
+                if (kapitenNijeUlistu == null)
+                {
+                    MessageBox.Show("Morate izabrati kapitena!");
+                    return;
+                }                    
+            }
             try
             {
                 //database access
@@ -231,7 +268,7 @@ namespace MongoDriverTest
 
 
                 //Serialization and BsonDocument creation
-                var document = BsonDocument.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(forSave));
+                var document = forSave.ToBsonDocument();
 
                 // insert or update check.
                 if (test == 0)

@@ -338,7 +338,6 @@
             this.LvIgraci.FullRowSelect = true;
             this.LvIgraci.GridLines = true;
             this.LvIgraci.Location = new System.Drawing.Point(12, 19);
-            this.LvIgraci.MultiSelect = false;
             this.LvIgraci.Name = "LvIgraci";
             this.LvIgraci.Size = new System.Drawing.Size(473, 337);
             this.LvIgraci.TabIndex = 30;

@@ -41,20 +41,20 @@
             this.BtnAddRep = new System.Windows.Forms.Button();
             this.BtnAddCntry = new System.Windows.Forms.Button();
             this.RtbOpis = new System.Windows.Forms.RichTextBox();
-            this.TbRepName = new System.Windows.Forms.RichTextBox();
             this.TbCntryName = new System.Windows.Forms.RichTextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.RtbSysIgr = new System.Windows.Forms.RichTextBox();
             this.TbLstWin = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.TbIme = new System.Windows.Forms.TextBox();
+            this.BtnRemRep = new System.Windows.Forms.Button();
+            this.BtnRemCntry = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 63);
+            this.label1.Location = new System.Drawing.Point(15, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 0;
@@ -64,9 +64,9 @@
             // 
             this.LvCntryList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnReprezentacije});
-            this.LvCntryList.Location = new System.Drawing.Point(99, 289);
+            this.LvCntryList.Location = new System.Drawing.Point(99, 338);
             this.LvCntryList.Name = "LvCntryList";
-            this.LvCntryList.Size = new System.Drawing.Size(256, 113);
+            this.LvCntryList.Size = new System.Drawing.Size(252, 113);
             this.LvCntryList.TabIndex = 1;
             this.LvCntryList.UseCompatibleStateImageBehavior = false;
             this.LvCntryList.View = System.Windows.Forms.View.Details;
@@ -74,12 +74,12 @@
             // columnReprezentacije
             // 
             this.columnReprezentacije.Text = "Ime Reprezentacije";
-            this.columnReprezentacije.Width = 250;
+            this.columnReprezentacije.Width = 246;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(299, 9);
+            this.label2.Location = new System.Drawing.Point(12, 202);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 13);
             this.label2.TabIndex = 2;
@@ -88,7 +88,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 289);
+            this.label3.Location = new System.Drawing.Point(12, 338);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 5;
@@ -97,7 +97,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(430, 9);
+            this.label4.Location = new System.Drawing.Point(402, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 13);
             this.label4.TabIndex = 6;
@@ -106,7 +106,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(402, 289);
+            this.label5.Location = new System.Drawing.Point(402, 338);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 7;
@@ -116,7 +116,7 @@
             // 
             this.LvStatistics.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnDrzava});
-            this.LvStatistics.Location = new System.Drawing.Point(458, 289);
+            this.LvStatistics.Location = new System.Drawing.Point(458, 338);
             this.LvStatistics.Name = "LvStatistics";
             this.LvStatistics.Size = new System.Drawing.Size(283, 113);
             this.LvStatistics.TabIndex = 8;
@@ -130,7 +130,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 419);
+            this.button1.Location = new System.Drawing.Point(12, 457);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(729, 23);
             this.button1.TabIndex = 10;
@@ -140,9 +140,9 @@
             // 
             // BtnAddRep
             // 
-            this.BtnAddRep.Location = new System.Drawing.Point(161, 235);
+            this.BtnAddRep.Location = new System.Drawing.Point(99, 309);
             this.BtnAddRep.Name = "BtnAddRep";
-            this.BtnAddRep.Size = new System.Drawing.Size(125, 23);
+            this.BtnAddRep.Size = new System.Drawing.Size(120, 23);
             this.BtnAddRep.TabIndex = 13;
             this.BtnAddRep.Text = "Dodaj Reprezentaciju";
             this.BtnAddRep.UseVisualStyleBackColor = true;
@@ -150,7 +150,7 @@
             // 
             // BtnAddCntry
             // 
-            this.BtnAddCntry.Location = new System.Drawing.Point(607, 235);
+            this.BtnAddCntry.Location = new System.Drawing.Point(458, 309);
             this.BtnAddCntry.Name = "BtnAddCntry";
             this.BtnAddCntry.Size = new System.Drawing.Size(123, 23);
             this.BtnAddCntry.TabIndex = 14;
@@ -160,41 +160,24 @@
             // 
             // RtbOpis
             // 
-            this.RtbOpis.Location = new System.Drawing.Point(113, 60);
+            this.RtbOpis.Location = new System.Drawing.Point(99, 88);
             this.RtbOpis.Name = "RtbOpis";
-            this.RtbOpis.Size = new System.Drawing.Size(173, 76);
+            this.RtbOpis.Size = new System.Drawing.Size(252, 76);
             this.RtbOpis.TabIndex = 16;
             this.RtbOpis.Text = "";
             // 
-            // TbRepName
-            // 
-            this.TbRepName.Location = new System.Drawing.Point(113, 153);
-            this.TbRepName.Name = "TbRepName";
-            this.TbRepName.Size = new System.Drawing.Size(173, 76);
-            this.TbRepName.TabIndex = 17;
-            this.TbRepName.Text = "";
-            // 
             // TbCntryName
             // 
-            this.TbCntryName.Location = new System.Drawing.Point(433, 108);
+            this.TbCntryName.Location = new System.Drawing.Point(458, 156);
             this.TbCntryName.Name = "TbCntryName";
-            this.TbCntryName.Size = new System.Drawing.Size(297, 111);
+            this.TbCntryName.Size = new System.Drawing.Size(272, 111);
             this.TbCntryName.TabIndex = 18;
             this.TbCntryName.Text = "";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 153);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 13);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Ime Reprezentacije";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(430, 88);
+            this.label7.Location = new System.Drawing.Point(402, 128);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 13);
             this.label7.TabIndex = 20;
@@ -202,23 +185,23 @@
             // 
             // RtbSysIgr
             // 
-            this.RtbSysIgr.Location = new System.Drawing.Point(302, 33);
+            this.RtbSysIgr.Location = new System.Drawing.Point(99, 202);
             this.RtbSysIgr.Name = "RtbSysIgr";
-            this.RtbSysIgr.Size = new System.Drawing.Size(100, 186);
+            this.RtbSysIgr.Size = new System.Drawing.Size(252, 78);
             this.RtbSysIgr.TabIndex = 21;
             this.RtbSysIgr.Text = "";
             // 
             // TbLstWin
             // 
-            this.TbLstWin.Location = new System.Drawing.Point(433, 33);
+            this.TbLstWin.Location = new System.Drawing.Point(458, 52);
             this.TbLstWin.Name = "TbLstWin";
-            this.TbLstWin.Size = new System.Drawing.Size(297, 20);
+            this.TbLstWin.Size = new System.Drawing.Size(272, 20);
             this.TbLstWin.TabIndex = 22;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(15, 13);
+            this.label8.Location = new System.Drawing.Point(15, 33);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(24, 13);
             this.label8.TabIndex = 23;
@@ -226,24 +209,44 @@
             // 
             // TbIme
             // 
-            this.TbIme.Location = new System.Drawing.Point(63, 13);
+            this.TbIme.Location = new System.Drawing.Point(99, 33);
             this.TbIme.Name = "TbIme";
-            this.TbIme.Size = new System.Drawing.Size(223, 20);
+            this.TbIme.Size = new System.Drawing.Size(252, 20);
             this.TbIme.TabIndex = 24;
+            // 
+            // BtnRemRep
+            // 
+            this.BtnRemRep.Location = new System.Drawing.Point(225, 309);
+            this.BtnRemRep.Name = "BtnRemRep";
+            this.BtnRemRep.Size = new System.Drawing.Size(126, 23);
+            this.BtnRemRep.TabIndex = 25;
+            this.BtnRemRep.Text = "Izbrisi Reprezentaciju";
+            this.BtnRemRep.UseVisualStyleBackColor = true;
+            this.BtnRemRep.Click += new System.EventHandler(this.BtnRemRep_Click);
+            // 
+            // BtnRemCntry
+            // 
+            this.BtnRemCntry.Location = new System.Drawing.Point(598, 309);
+            this.BtnRemCntry.Name = "BtnRemCntry";
+            this.BtnRemCntry.Size = new System.Drawing.Size(132, 23);
+            this.BtnRemCntry.TabIndex = 26;
+            this.BtnRemCntry.Text = "Izbrisi Drzavu";
+            this.BtnRemCntry.UseVisualStyleBackColor = true;
+            this.BtnRemCntry.Click += new System.EventHandler(this.BtnRemCntry_Click);
             // 
             // FDodajTakmicenje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 454);
+            this.ClientSize = new System.Drawing.Size(753, 492);
+            this.Controls.Add(this.BtnRemCntry);
+            this.Controls.Add(this.BtnRemRep);
             this.Controls.Add(this.TbIme);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TbLstWin);
             this.Controls.Add(this.RtbSysIgr);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.TbCntryName);
-            this.Controls.Add(this.TbRepName);
             this.Controls.Add(this.RtbOpis);
             this.Controls.Add(this.BtnAddCntry);
             this.Controls.Add(this.BtnAddRep);
@@ -277,13 +280,13 @@
         private System.Windows.Forms.Button BtnAddRep;
         private System.Windows.Forms.Button BtnAddCntry;
         private System.Windows.Forms.RichTextBox RtbOpis;
-        private System.Windows.Forms.RichTextBox TbRepName;
         private System.Windows.Forms.RichTextBox TbCntryName;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RichTextBox RtbSysIgr;
         private System.Windows.Forms.TextBox TbLstWin;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox TbIme;
+        private System.Windows.Forms.Button BtnRemRep;
+        private System.Windows.Forms.Button BtnRemCntry;
     }
 }

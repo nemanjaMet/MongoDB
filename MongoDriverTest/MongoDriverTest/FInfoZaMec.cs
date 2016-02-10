@@ -1,4 +1,7 @@
-﻿using MongoDB.DomainModel;
+﻿using MongoDB.Bson;
+using MongoDB.DomainModel;
+using MongoDB.Driver;
+using MongoDB.Driver.GridFS;
 using MongoDriverTest.DomainModel;
 using System;
 using System.Collections.Generic;
@@ -61,7 +64,10 @@ namespace MongoDriverTest
             try
             {
                 //TO DO : UCITATI I FORMATIRATI INFORMACIJE O OBA TIMA I O STADIONU I UPISATI U RTB..
-
+                //prvo za domacina
+                AuxLib.PrikaziDomacinaRTB(RTBDomacinInfo, domacin.Ime);
+                AuxLib.PrikaziGostaRTB(RTBGostInfo, gost.Ime);
+                AuxLib.PrikaziStadionRTB(RTBStadionInfo, stadion.Ime);
 
 
 

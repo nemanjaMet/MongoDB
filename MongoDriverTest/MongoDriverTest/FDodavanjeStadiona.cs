@@ -104,7 +104,15 @@ namespace MongoDriverTest
                 var test = collection.Find(filterForUniqueCheck).Count();
                 if (test == 0)
                 {
-                    AuxLib.AddImageToGridFS(slikaStadiona, this.TbIme.Text + "stadion", format);
+                    if (slikaStadiona != null)
+                    {
+                        AuxLib.AddImageToGridFS(slikaStadiona, this.TbIme.Text + "stadion", format);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Slika nije ubacena.");
+                    }
+
                     collection.InsertOne(document);
                     MessageBox.Show("Uspesno dodat novi stadion!");
                 }

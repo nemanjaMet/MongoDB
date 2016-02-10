@@ -194,14 +194,7 @@ namespace MongoDriverTest
 
                 //test if reprezentacija exists
                 var test = collection.Find(filterForUniqueCheck).Count();
-                //if(test != 0)
-                //{
-                //    var reprez = collection.Find(filterForUniqueCheck).First();
-                //    var jsonWriterSettings = new JsonWriterSettings { OutputMode = JsonOutputMode.Strict };
-
-                //    Reprezentacija rep = Newtonsoft.Json.JsonConvert.DeserializeObject<Reprezentacija>(reprez.ToJson(jsonWriterSettings));
-
-                //}
+                
                 var countForID = collection.Count(filterAllCount);
 
                 // model creating
@@ -231,7 +224,7 @@ namespace MongoDriverTest
 
 
                 //Serialization and BsonDocument creation
-                var document = BsonDocument.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(forSave));
+                var document = forSave.ToBsonDocument();//BsonDocument.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(forSave));
 
                 // insert or update check.
                 if (test == 0)

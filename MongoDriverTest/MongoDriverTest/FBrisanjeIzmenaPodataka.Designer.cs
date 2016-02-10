@@ -62,9 +62,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.LVStadioni = new System.Windows.Forms.ListView();
             this.Ime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Lokacija = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Kapacitet = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Vlasnik = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Lokacija = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Istorija = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
@@ -372,6 +372,8 @@
             this.Vlasnik,
             this.Lokacija,
             this.Istorija});
+            this.LVStadioni.FullRowSelect = true;
+            this.LVStadioni.GridLines = true;
             this.LVStadioni.Location = new System.Drawing.Point(3, 3);
             this.LVStadioni.Name = "LVStadioni";
             this.LVStadioni.Size = new System.Drawing.Size(897, 361);
@@ -383,10 +385,6 @@
             // 
             this.Ime.Text = "Ime";
             // 
-            // Lokacija
-            // 
-            this.Lokacija.Text = "Lokacija";
-            // 
             // Kapacitet
             // 
             this.Kapacitet.Text = "Kapacitet";
@@ -394,6 +392,10 @@
             // Vlasnik
             // 
             this.Vlasnik.Text = "Vlasnik";
+            // 
+            // Lokacija
+            // 
+            this.Lokacija.Text = "Lokacija";
             // 
             // Istorija
             // 
@@ -431,6 +433,8 @@
             this.Trenutni_klub,
             this.Trenerska_karijera,
             this.Uspesi});
+            this.LVTreneri.FullRowSelect = true;
+            this.LVTreneri.GridLines = true;
             this.LVTreneri.Location = new System.Drawing.Point(3, 3);
             this.LVTreneri.Name = "LVTreneri";
             this.LVTreneri.Size = new System.Drawing.Size(897, 371);

@@ -30,9 +30,10 @@ namespace MongoDriverTest
                     var _database = _client.GetDatabase("test");
 
                     var collection = _database.GetCollection<BsonDocument>("igraci");
+                    ObjectId dbID = new  ObjectId(LvIgraci.SelectedItems[0].Text);
                     var filter = new BsonDocument()
                     {
-                        {"_id",LvIgraci.SelectedItems[0].Text}
+                        {"_id",dbID}
                     };
                     collection.DeleteOne(filter);
                 }
@@ -61,11 +62,11 @@ namespace MongoDriverTest
                 {
                     var _client = new MongoClient();
                     var _database = _client.GetDatabase("test");
-
+                    ObjectId dbID = new ObjectId(LvIgraci.SelectedItems[0].Text);
                     var collection = _database.GetCollection<BsonDocument>("igraci");
                     var filter = new BsonDocument()
                     {
-                        {"_id",LvIgraci.SelectedItems[0].Text}
+                        {"_id",dbID}
                     };
                     collection.DeleteOne(filter);
                 }
@@ -117,11 +118,11 @@ namespace MongoDriverTest
                 {
                     var _client = new MongoClient();
                     var _database = _client.GetDatabase("test");
-
+                    ObjectId dbID = new ObjectId(LvIgraci.SelectedItems[0].Text);
                     var collection = _database.GetCollection<BsonDocument>("igraci");
                     var filter = new BsonDocument()
                     {
-                        {"_id",LvIgraci.SelectedItems[0].Text}
+                        {"_id",dbID}
                     };
                     collection.DeleteOne(filter);
                 }
@@ -173,11 +174,11 @@ namespace MongoDriverTest
                 {
                     var _client = new MongoClient();
                     var _database = _client.GetDatabase("test");
-
+                    ObjectId dbID = new ObjectId(LvIgraci.SelectedItems[0].Text);
                     var collection = _database.GetCollection<BsonDocument>("igraci");
                     var filter = new BsonDocument()
                     {
-                        {"_id",LvIgraci.SelectedItems[0].Text}
+                        {"_id",dbID}
                     };
                     collection.DeleteOne(filter);
                 }
@@ -194,7 +195,7 @@ namespace MongoDriverTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (LvTakmicanja.SelectedItems.Count != 0)
+            if (LVStadioni.SelectedItems.Count != 0)
             {
                 try
                 {
@@ -204,7 +205,7 @@ namespace MongoDriverTest
                     var collection = _database.GetCollection<BsonDocument>("stadioni");
                     var filter = new BsonDocument()
                     {
-                        {"Ime",LvIgraci.SelectedItems[0].Text}
+                        {"Ime",LVStadioni.SelectedItems[0].Text}
                     };
                     collection.DeleteOne(filter);
                 }
@@ -213,27 +214,27 @@ namespace MongoDriverTest
                     MessageBox.Show(ex.Message);
                 }
                 // ---- Izbaci igraca iz listView ----
-                LvTakmicanja.SelectedItems[0].Remove();
+                LVStadioni.SelectedItems[0].Remove();
             }
             else
             {
-                MessageBox.Show("Selektuj igraca kog hoces da izbrises!");
+                MessageBox.Show("Selektuj stadion koji hoces da izbrises!");
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (LvTakmicanja.SelectedItems.Count != 0)
+            if (LVTreneri.SelectedItems.Count != 0)
             {
                 try
                 {
                     var _client = new MongoClient();
                     var _database = _client.GetDatabase("test");
-
+                    ObjectId dbID = new ObjectId(LVTreneri.SelectedItems[0].Text);
                     var collection = _database.GetCollection<BsonDocument>("treneri");
                     var filter = new BsonDocument()
                     {
-                        {"_id",LvIgraci.SelectedItems[0].Text}
+                        {"_id",dbID}
                     };
                     collection.DeleteOne(filter);
                     
@@ -243,11 +244,11 @@ namespace MongoDriverTest
                     MessageBox.Show(ex.Message);
                 }
                 // ---- Izbaci igraca iz listView ----
-                LvTakmicanja.SelectedItems[0].Remove();
+                LVTreneri.SelectedItems[0].Remove();
             }
             else
             {
-                MessageBox.Show("Selektuj igraca kog hoces da izbrises!");
+                MessageBox.Show("Selektuj trenera kog hoces da izbrises!");
             }
         }
 

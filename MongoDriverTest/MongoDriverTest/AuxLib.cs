@@ -35,10 +35,14 @@ namespace MongoDriverTest
 
                 ListViewItem lv1 = new ListViewItem(doc._id.ToString());
                 lv1.SubItems.Add(doc.PunoIme);
+                lv1.SubItems.Add(doc.MestoRodjenja);
                 lv1.SubItems.Add(doc.DatumRodjenja.ToString());
-                lv1.SubItems.Add(doc.Pozicija);
                 lv1.SubItems.Add(doc.TrenutniKlub);
-
+                lv1.SubItems.Add(doc.Visina);
+                lv1.SubItems.Add(doc.Pozicija);
+                
+               // lv1.SubItems.Add(doc.Visina);
+               // lv1.SubItems.Add(doc.Pozicija);
                 LVForAdding.Items.Add(lv1);
             }
         }
@@ -231,7 +235,8 @@ namespace MongoDriverTest
                 var client = new MongoClient("mongodb://localhost");
                 var database = client.GetDatabase("docs");
                 var fs = new GridFSBucket(database);
-
+                //BsonValue test = new BsonValue();
+                //fs.Delete()
                 GridFSUploadOptions opcije = new GridFSUploadOptions();
                 opcije.ContentType = "audio/"+format;
                 opcije.ChunkSizeBytes = Convert.ToInt32(stream.Length) / 4;
@@ -254,13 +259,21 @@ namespace MongoDriverTest
 
         public static byte[] LoadSoundFromGridFS(string reprezentacija)
         {
-            var client = new MongoClient("mongodb://localhost");
-            var database = client.GetDatabase("docs");
-            var fs = new GridFSBucket(database);
+            try
+            {
+                var client = new MongoClient("mongodb://localhost");
+                var database = client.GetDatabase("docs");
+                var fs = new GridFSBucket(database);
 
-            var data = fs.DownloadAsBytesByName(reprezentacija);
-            
-            return data;
+                var data = fs.DownloadAsBytesByName(reprezentacija);
+
+                return data;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
         }
     }
 }

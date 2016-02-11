@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MongoDB.Driver.GridFS;
 
 namespace MongoDriverTest
 {
@@ -36,6 +37,11 @@ namespace MongoDriverTest
                         {"_id",dbID}
                     };
                     collection.DeleteOne(filter);
+
+                    // ---- Brisanje slike igraca iz baze ----
+                    string imeSlike = "igrac" + LvIgraci.SelectedItems[0].SubItems[1].Text;
+                    AuxLib.deleteFromGridFS(imeSlike);
+
                 }
                 catch(Exception ex)
                 {
@@ -89,13 +95,19 @@ namespace MongoDriverTest
                 {
                     var _client = new MongoClient();
                     var _database = _client.GetDatabase("test");
-
+                    
                     var collection = _database.GetCollection<BsonDocument>("reprezentacije");
                     var filter = new BsonDocument()
                     {
-                        {"Ime",LvIgraci.SelectedItems[0].Text}
+                        {"Ime", LvReprezentacije.SelectedItems[0].Text}
                     };
                     collection.DeleteOne(filter);
+
+                    string imeFajla = LvReprezentacije.SelectedItems[0].Text;
+                    // Brisanje zastave
+                    AuxLib.deleteFromGridFS("zastava"+imeFajla);
+                    // Brisanje himne
+                    AuxLib.deleteFromGridFS("himna"+imeFajla);
                 }
                 catch (Exception ex)
                 {
@@ -122,7 +134,9 @@ namespace MongoDriverTest
                     var collection = _database.GetCollection<BsonDocument>("igraci");
                     var filter = new BsonDocument()
                     {
+
                         {"_id",dbID}
+
                     };
                     collection.DeleteOne(filter);
                 }
@@ -149,7 +163,7 @@ namespace MongoDriverTest
                     var collection = _database.GetCollection<BsonDocument>("takmicenja");
                     var filter = new BsonDocument()
                     {
-                        {"Ime",LvIgraci.SelectedItems[0].Text}
+                        {"Ime",LvTakmicanja.SelectedItems[0].Text}
                     };
                     collection.DeleteOne(filter);
                 }
@@ -178,7 +192,9 @@ namespace MongoDriverTest
                     var collection = _database.GetCollection<BsonDocument>("igraci");
                     var filter = new BsonDocument()
                     {
+
                         {"_id",dbID}
+
                     };
                     collection.DeleteOne(filter);
                 }
@@ -208,6 +224,10 @@ namespace MongoDriverTest
                         {"Ime",LVStadioni.SelectedItems[0].Text}
                     };
                     collection.DeleteOne(filter);
+
+                    // Brisanje slike
+                    string imeStadiona = LVStadioni.SelectedItems[0].Text;
+                    AuxLib.deleteFromGridFS("stadion" + imeStadiona);
                 }
                 catch (Exception ex)
                 {
@@ -234,10 +254,16 @@ namespace MongoDriverTest
                     var collection = _database.GetCollection<BsonDocument>("treneri");
                     var filter = new BsonDocument()
                     {
+
                         {"_id",dbID}
+
                     };
                     collection.DeleteOne(filter);
                     
+                    // Brisanje slike
+                    string imeSlike = LVTreneri.SelectedItems[0].Text;
+                    AuxLib.deleteFromGridFS("trener" + imeSlike);
+
                 }
                 catch (Exception ex)
                 {

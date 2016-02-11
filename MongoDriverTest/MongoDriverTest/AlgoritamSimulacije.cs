@@ -204,6 +204,12 @@ namespace MongoDriverTest
                     // ---- Nova dodela skilova ----
                     domacin = noviSkilovi(domacin, true, 2);
                     gost = noviSkilovi(gost, false, 2);
+
+                    if (i == 45)
+                    {                      
+                        forma.Minuti.BeginInvoke(updateMin, "Poluvreme (5s)");
+                        Thread.Sleep(5000);
+                    }
                 }
 
             }

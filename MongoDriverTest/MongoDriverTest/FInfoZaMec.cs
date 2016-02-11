@@ -1,7 +1,4 @@
-﻿using MongoDB.Bson;
-using MongoDB.DomainModel;
-using MongoDB.Driver;
-using MongoDB.Driver.GridFS;
+﻿using MongoDB.DomainModel;
 using MongoDriverTest.DomainModel;
 using System;
 using System.Collections.Generic;
@@ -22,6 +19,8 @@ namespace MongoDriverTest
         private Reprezentacija gost;
         private Stadion stadion;
         private bool notClosed;
+        string domacinIme = "";
+        string gostIme = "";
         public FInfoZaMec()
         {
             InitializeComponent();
@@ -30,6 +29,12 @@ namespace MongoDriverTest
             this.gost = null;
             this.stadion = null;
             notClosed = true;
+        }
+        public FInfoZaMec(FIzborReprezentacijaZaUtakmicu staraForma, string domacin, string gost)
+        {
+            domacinIme = domacin;
+            gostIme = gost;
+            staraForma.Dispose();
         }
         public FInfoZaMec(Reprezentacija domacin, Reprezentacija gost, Stadion stadion)
         {
@@ -64,10 +69,7 @@ namespace MongoDriverTest
             try
             {
                 //TO DO : UCITATI I FORMATIRATI INFORMACIJE O OBA TIMA I O STADIONU I UPISATI U RTB..
-                //prvo za domacina
-                AuxLib.PrikaziDomacinaRTB(RTBDomacinInfo, domacin.Ime);
-                AuxLib.PrikaziGostaRTB(RTBGostInfo, gost.Ime);
-                AuxLib.PrikaziStadionRTB(RTBStadionInfo, stadion.Ime);
+
 
 
 

@@ -182,9 +182,8 @@ namespace MongoDriverTest
             
         }
 
-       
 
-        private void BtnUcitajSliku_Click(object sender, EventArgs e)
+        private void BtnUcitajSliku_Click_1(object sender, EventArgs e)
         {
             Image slika;
             FileStream fs;
@@ -193,9 +192,7 @@ namespace MongoDriverTest
             {
                 fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
                 slika = Image.FromStream(fs);
-
-                //PbSlikaIgraca.Image = Image.FromStream(fs);
-
+                PbSlikaIgraca.Image = Image.FromStream(fs);
 
                 int duzina = Convert.ToInt32(fs.Length);
                 byte[] bajtovi = new byte[duzina];
@@ -203,6 +200,7 @@ namespace MongoDriverTest
                 int bytesRead = fs.Read(bajtovi, 0, duzina);
             }   
         }
+
 
     }
 }

@@ -21,6 +21,7 @@ namespace MongoDriverTest
 {
     public partial class FDodavanjeIgraca : Form
     {
+        private Image slika;
         public FDodavanjeIgraca()
         {
             InitializeComponent();
@@ -185,20 +186,38 @@ namespace MongoDriverTest
 
         private void BtnUcitajSliku_Click_1(object sender, EventArgs e)
         {
-            Image slika;
-            FileStream fs;
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
-                slika = Image.FromStream(fs);
-                PbSlikaIgraca.Image = Image.FromStream(fs);
+                FileStream fs;
+                OpenFileDialog ofd = new OpenFileDialog();
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (ofd.SafeFileName.Split('.')[1] == "jpg" || ofd.SafeFileName.Split('.')[1] == "png" || ofd.SafeFileName.Split('.')[1] == "jpeg")
+                    {
+                        fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
+                        slika = Image.FromStream(fs);
+                        PbSlikaIgraca.Image = Image.FromStream(fs);
 
-                int duzina = Convert.ToInt32(fs.Length);
-                byte[] bajtovi = new byte[duzina];
-                fs.Seek(0, SeekOrigin.Begin);
-                int bytesRead = fs.Read(bajtovi, 0, duzina);
-            }   
+                        int duzina = Convert.ToInt32(fs.Length);
+                        byte[] bajtovi = new byte[duzina];
+                        fs.Seek(0, SeekOrigin.Begin);
+                        int bytesRead = fs.Read(bajtovi, 0, duzina);
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Nepodrzan tip podataka,slika moze biti u jpg ili png formatu.");
+                        return;
+                    }
+
+
+                } 
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+              
         }
 
 

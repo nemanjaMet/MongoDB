@@ -277,22 +277,26 @@ namespace MongoDriverTest
         }
 
         //-------- funkcija koja se poziva kad se ucitavaju informacije o domacem timu ---------
-        internal static async void PrikaziDomacinaRTB(RichTextBox RTBDomacinInfo, string p)
+        internal static Reprezentacija PrikaziDomacinaRTB(RichTextBox RTBDomacinInfo, string p)
         {
             var _client = new MongoClient();
             var _database = _client.GetDatabase("test");
             // mora Nemca da mi kaze gde ih smesta koja kolekcija
             var collection = _database.GetCollection<Reprezentacija>("reprezentacije");
-            var filter = new BsonDocument();
-
-            var result = await collection.Find(filter).ToListAsync<Reprezentacija>();
-
-            foreach (Reprezentacija doc in result)
+            var filter = new BsonDocument() 
             {
+                {"Ime",p}
+            };
+
+            //var result = await collection.Find(filter).ToListAsync<Reprezentacija>();
+            var doc = collection.Find<Reprezentacija>(filter).FirstOrDefault();
+            
+            //foreach (Reprezentacija doc in result)
+           // {
                 //var jsonWriterSettings = new JsonWriterSettings { OutputMode = JsonOutputMode.Strict };
 
                 // ---- proveravam da li se u bazi nalazi reprezentacija sa zadatim imenom? -------
-                if (doc.Ime == p)
+                if (doc != null)
                 {
                     // ----- ako se nalazi popunjavam RichTextBox sa osnovnim podacima --- -- --
                     RTBDomacinInfo.Text += "Ime: ";
@@ -319,31 +323,37 @@ namespace MongoDriverTest
                     RTBDomacinInfo.Text += "Rang: ";
                     RTBDomacinInfo.Text += doc.FifaRang;
                     RTBDomacinInfo.Text += Environment.NewLine;
+                    return doc;
                 }
                 else
                 {
                     MessageBox.Show("Ne postoji domaca reprezentacija sa navedenim imenom!");
+                    return null;
                 }
-            }
+            //}
         }
         //funkcija za gosta
-        internal static  async void PrikaziGostaRTB(RichTextBox RTBGostInfo, string p)
+        internal static Reprezentacija PrikaziGostaRTB(RichTextBox RTBGostInfo, string p)
         {
             var _client = new MongoClient();
             var _database = _client.GetDatabase("test");
             // mora Nemca da mi kaze gde ih smesta koja kolekcija
             var collection = _database.GetCollection<Reprezentacija>("reprezentacije");
-            var filter = new BsonDocument();
-
-            var result = await collection.Find(filter).ToListAsync<Reprezentacija>();
-
-            foreach (Reprezentacija doc in result)
+            var filter = new BsonDocument() 
             {
+                {"Ime",p}
+            };
+
+            //var result = await collection.Find(filter).ToListAsync<Reprezentacija>();
+            var doc = collection.Find<Reprezentacija>(filter).FirstOrDefault();
+
+            //foreach (Reprezentacija doc in result)
+            //{
                 //var jsonWriterSettings = new JsonWriterSettings { OutputMode = JsonOutputMode.Strict };
 
                 //var json = doc.ToJson(jsonWriterSettings);
                 //Igrac r = Newtonsoft.Json.JsonConvert.DeserializeObject<Igrac>(json);
-                if (doc.Ime == p)
+                if (doc != null)
                 {
                     RTBGostInfo.Text += "Ime: ";
                     RTBGostInfo.Text += doc.Ime;
@@ -369,28 +379,33 @@ namespace MongoDriverTest
                     RTBGostInfo.Text += "Rang: ";
                     RTBGostInfo.Text += doc.FifaRang;
                     RTBGostInfo.Text += Environment.NewLine;
+                    return doc;
                 }
                 else
                 {
                     MessageBox.Show("Ne postoji gostujuca reprezentacija sa navedenim imenom!");
+                    return null;
                 }
-            }
+            
         }
         // ------- Funkcija kojom uzimamo podatke o stadionu i prikazujemo informacije u RichTextBoxu --------
-        internal static async void PrikaziStadionRTB(RichTextBox RTBStadionInfo, string p)
+        internal static  Stadion PrikaziStadionRTB(RichTextBox RTBStadionInfo, string p)
         {
             var _client = new MongoClient();
             var _database = _client.GetDatabase("test");
             // mora Nemca da mi kaze gde ih smesta koja kolekcija
             var collection = _database.GetCollection<Stadion>("stadioni");
-            var filter = new BsonDocument();
-
-            var result = await collection.Find(filter).ToListAsync<Stadion>();
-            char[] delimeters = {','};
-            foreach (Stadion doc in result)
+            var filter = new BsonDocument() 
             {
+                {"Ime",p}
+            };
+            var doc = collection.Find<Stadion>(filter).FirstOrDefault();
+            //var result = await collection.Find(filter).ToListAsync<Stadion>();
+            char[] delimeters = {','};
+            //foreach (Stadion doc in result)
+            //{
                 //provera da li stadion postoji
-                if(doc.Ime == p)
+                if(doc != null)
                 {
                     RTBStadionInfo.Text += "Ime: ";
                     RTBStadionInfo.Text += doc.Ime;
@@ -412,12 +427,23 @@ namespace MongoDriverTest
                     RTBStadionInfo.Text += "Istorija: ";
                     RTBStadionInfo.Text += doc.Istorija;
                     RTBStadionInfo.Text += Environment.NewLine;
+                    return doc;
                 }
                 else
                 {
                     MessageBox.Show("Stadion nije pronadjen!!");
+                    return null;
                 }
-            }
+            //}
+        }
+
+        public static void deleteFromGridFS(string imeFajla)
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var server = client.GetServer();
+            var database = server.GetDatabase("docs");
+            var gridFs = new MongoGridFS(database);
+            gridFs.Delete(imeFajla);
         }
     }
 }

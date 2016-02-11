@@ -21,7 +21,7 @@ namespace MongoDriverTest
         private Image slikaReprezentacije;
         private string format;
         private string imeSlike;
-
+        
         private Igrac elKapetano;
         private bool testData;
         public FReprezentacija()

@@ -9,16 +9,33 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
+using MongoDB.DomainModel;
 
 namespace MongoDriverTest
 {
     public partial class FFudbalskaIgra : Form
     {
+        //private FInfoZaMec info;
+        private Reprezentacija domacin;
+        private Reprezentacija gost;
         public FFudbalskaIgra()
         {
             InitializeComponent();
         }
+        public FFudbalskaIgra(FInfoZaMec test,Reprezentacija domacin,Reprezentacija gost)
+        {
+          
+            this.domacin = domacin;
+            this.gost = gost;
+            InitializeComponent();
 
+            this.DomacinSkracenica.Text = domacin.Skracenica;
+            this.GostSkracenica.Text = gost.Skracenica;
+
+            
+
+            test.Dispose();
+        }
         Thread simulacijaUtakmice;
 
         public void updateMinut(string minut)
@@ -96,6 +113,7 @@ namespace MongoDriverTest
 
         public void updateDogadjaji(string dogadjaj)
         {
+            
             string outputText = dogadjaj + Environment.NewLine;
             outputText += Environment.NewLine + RtbDogadjaji.Text;
             RtbDogadjaji.Text = outputText;
@@ -107,7 +125,10 @@ namespace MongoDriverTest
             RtbDogadjaji.Enabled = true;
             RtbSastavDomacin.Enabled = true;
             RtbSastavGost.Enabled = true;
-            BtnSimulacijaUtakmice.Visible = false;
+
+            
+
+           // BtnSimulacijaUtakmice.Visible = false;
             if (simulacijaUtakmice == null || !simulacijaUtakmice.IsAlive)
             {
                 AlgoritamSimulacije algo = new AlgoritamSimulacije(this);

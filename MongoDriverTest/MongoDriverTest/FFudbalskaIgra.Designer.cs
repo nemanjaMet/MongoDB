@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.ScoreBoard = new System.Windows.Forms.Panel();
-            this.BtnSimulacijaUtakmice = new System.Windows.Forms.Button();
             this.GostSkracenica = new System.Windows.Forms.Label();
             this.DomacinSkracenica = new System.Windows.Forms.Label();
             this.Minuti = new System.Windows.Forms.Label();
@@ -59,16 +58,6 @@
             this.ScoreBoard.Size = new System.Drawing.Size(368, 104);
             this.ScoreBoard.TabIndex = 0;
             this.ScoreBoard.Visible = false;
-            // 
-            // BtnSimulacijaUtakmice
-            // 
-            this.BtnSimulacijaUtakmice.Location = new System.Drawing.Point(32, 12);
-            this.BtnSimulacijaUtakmice.Name = "BtnSimulacijaUtakmice";
-            this.BtnSimulacijaUtakmice.Size = new System.Drawing.Size(165, 38);
-            this.BtnSimulacijaUtakmice.TabIndex = 6;
-            this.BtnSimulacijaUtakmice.Text = "Simulacija utakmice";
-            this.BtnSimulacijaUtakmice.UseVisualStyleBackColor = true;
-            this.BtnSimulacijaUtakmice.Click += new System.EventHandler(this.BtnSimulacijaUtakmice_Click);
             // 
             // GostSkracenica
             // 
@@ -137,6 +126,7 @@
             this.RtbDogadjaji.Enabled = false;
             this.RtbDogadjaji.Location = new System.Drawing.Point(243, 135);
             this.RtbDogadjaji.Name = "RtbDogadjaji";
+            this.RtbDogadjaji.ReadOnly = true;
             this.RtbDogadjaji.Size = new System.Drawing.Size(388, 342);
             this.RtbDogadjaji.TabIndex = 1;
             this.RtbDogadjaji.Text = "";
@@ -146,6 +136,7 @@
             this.RtbSastavDomacin.Enabled = false;
             this.RtbSastavDomacin.Location = new System.Drawing.Point(12, 135);
             this.RtbSastavDomacin.Name = "RtbSastavDomacin";
+            this.RtbSastavDomacin.ReadOnly = true;
             this.RtbSastavDomacin.Size = new System.Drawing.Size(225, 342);
             this.RtbSastavDomacin.TabIndex = 2;
             this.RtbSastavDomacin.Text = "";
@@ -155,6 +146,7 @@
             this.RtbSastavGost.Enabled = false;
             this.RtbSastavGost.Location = new System.Drawing.Point(637, 135);
             this.RtbSastavGost.Name = "RtbSastavGost";
+            this.RtbSastavGost.ReadOnly = true;
             this.RtbSastavGost.Size = new System.Drawing.Size(268, 342);
             this.RtbSastavGost.TabIndex = 3;
             this.RtbSastavGost.Text = "";
@@ -184,7 +176,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 570);
-            this.Controls.Add(this.BtnSimulacijaUtakmice);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.RtbSastavGost);
@@ -196,6 +187,7 @@
             this.Name = "FFudbalskaIgra";
             this.Text = "FFudbalskaIgra";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FFudbalskaIgra_FormClosing);
+            this.Shown += new System.EventHandler(this.BtnSimulacijaUtakmice_Click);
             this.ScoreBoard.ResumeLayout(false);
             this.ScoreBoard.PerformLayout();
             this.ResumeLayout(false);
@@ -217,6 +209,5 @@
         public System.Windows.Forms.RichTextBox RtbDogadjaji;
         public System.Windows.Forms.RichTextBox RtbSastavDomacin;
         public System.Windows.Forms.RichTextBox RtbSastavGost;
-        private System.Windows.Forms.Button BtnSimulacijaUtakmice;
     }
 }

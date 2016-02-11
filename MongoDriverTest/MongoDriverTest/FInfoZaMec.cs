@@ -32,8 +32,12 @@ namespace MongoDriverTest
         }
         public FInfoZaMec(FIzborReprezentacijaZaUtakmicu staraForma, string domacin, string gost)
         {
+            InitializeComponent();
+
             domacinIme = domacin;
             gostIme = gost;
+
+
             staraForma.Dispose();
         }
         public FInfoZaMec(Reprezentacija domacin, Reprezentacija gost, Stadion stadion)
@@ -44,6 +48,7 @@ namespace MongoDriverTest
             this.gost = gost;
             this.stadion = stadion;
 
+            
             notClosed = true;
         }
         private NAudio.Wave.BlockAlignReductionStream stream = null;
@@ -69,20 +74,19 @@ namespace MongoDriverTest
             try
             {
                 //TO DO : UCITATI I FORMATIRATI INFORMACIJE O OBA TIMA I O STADIONU I UPISATI U RTB..
-
-
-
-
+                domacin = AuxLib.PrikaziDomacinaRTB(this.RTBDomacinInfo, domacinIme);
+                gost = AuxLib.PrikaziDomacinaRTB(this.RTBGostInfo, gostIme);
+                stadion = AuxLib.PrikaziStadionRTB(this.RTBStadionInfo, "Test");
                 //-------------------------
 
                 //ucitavanje slika iz gridFS-a
-                this.PBDomacinZastava.Image = AuxLib.LoadImageFromGridFS(domacin.Ime + "zastava");
-                this.PBGostZastava.Image = AuxLib.LoadImageFromGridFS(gost.Ime + "zastava");
-                this.PBStadionZastava.Image = AuxLib.LoadImageFromGridFS(stadion.Ime + "stadion");
+                this.PBDomacinZastava.Image = AuxLib.LoadImageFromGridFS(this.domacinIme + "zastava");
+                this.PBGostZastava.Image = AuxLib.LoadImageFromGridFS(this.gostIme + "zastava");
+                this.PBStadionZastava.Image = AuxLib.LoadImageFromGridFS("Test" + "stadion");
                 //--------------------------
 
                 //ucitamo himnu iz baze kao byte array
-                byte[] domacinPesma = AuxLib.LoadSoundFromGridFS(domacin.Ime+"himna");
+                byte[] domacinPesma = AuxLib.LoadSoundFromGridFS(domacinIme+"himna");
                 //napravis stream
                 MemoryStream domacinStream = new MemoryStream(domacinPesma);
                 //prekines ako ima neka pesma prethodno ( za svaki slucaj );
@@ -138,6 +142,11 @@ namespace MongoDriverTest
         {
             notClosed = false;
             this.DisposeWave();
+
+            FFudbalskaIgra test = new FFudbalskaIgra(this,domacin,gost);
+            this.Hide();
+            test.ShowDialog();
+            
         }
     }
 }

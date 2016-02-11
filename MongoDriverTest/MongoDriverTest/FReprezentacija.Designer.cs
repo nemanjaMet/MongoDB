@@ -55,6 +55,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.LvIgraci = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.rtbOsvojeneMedalje = new System.Windows.Forms.RichTextBox();
@@ -68,14 +76,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button7 = new System.Windows.Forms.Button();
             this.PBslikaReprezentacije = new System.Windows.Forms.PictureBox();
-            this.LvIgraci = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFifaRang)).BeginInit();
@@ -325,6 +325,60 @@
             this.groupBox2.Text = "Svi igraci";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // LvIgraci
+            // 
+            this.LvIgraci.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader16,
+            this.columnHeader17,
+            this.columnHeader18});
+            this.LvIgraci.FullRowSelect = true;
+            this.LvIgraci.GridLines = true;
+            this.LvIgraci.Location = new System.Drawing.Point(6, 13);
+            this.LvIgraci.Name = "LvIgraci";
+            this.LvIgraci.Size = new System.Drawing.Size(481, 343);
+            this.LvIgraci.TabIndex = 25;
+            this.LvIgraci.UseCompatibleStateImageBehavior = false;
+            this.LvIgraci.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Width = 0;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Puno ime";
+            this.columnHeader2.Width = 78;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Mesto rodjenja";
+            this.columnHeader3.Width = 101;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Datum rodjenja";
+            this.columnHeader4.Width = 100;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Trenutni klub";
+            this.columnHeader16.Width = 95;
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "Visina";
+            this.columnHeader17.Width = 39;
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Pozicija";
+            this.columnHeader18.Width = 105;
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(526, 382);
@@ -437,61 +491,6 @@
             this.PBslikaReprezentacije.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PBslikaReprezentacije.TabIndex = 31;
             this.PBslikaReprezentacije.TabStop = false;
-            // 
-            // LvIgraci
-            // 
-            this.LvIgraci.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader16,
-            this.columnHeader17,
-            this.columnHeader18});
-            this.LvIgraci.FullRowSelect = true;
-            this.LvIgraci.GridLines = true;
-            this.LvIgraci.Location = new System.Drawing.Point(6, 13);
-            this.LvIgraci.MultiSelect = false;
-            this.LvIgraci.Name = "LvIgraci";
-            this.LvIgraci.Size = new System.Drawing.Size(481, 343);
-            this.LvIgraci.TabIndex = 25;
-            this.LvIgraci.UseCompatibleStateImageBehavior = false;
-            this.LvIgraci.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "ID";
-            this.columnHeader1.Width = 0;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Puno ime";
-            this.columnHeader2.Width = 78;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Mesto rodjenja";
-            this.columnHeader3.Width = 101;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Datum rodjenja";
-            this.columnHeader4.Width = 100;
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "Trenutni klub";
-            this.columnHeader16.Width = 95;
-            // 
-            // columnHeader17
-            // 
-            this.columnHeader17.Text = "Visina";
-            this.columnHeader17.Width = 39;
-            // 
-            // columnHeader18
-            // 
-            this.columnHeader18.Text = "Pozicija";
-            this.columnHeader18.Width = 105;
             // 
             // FReprezentacija
             // 

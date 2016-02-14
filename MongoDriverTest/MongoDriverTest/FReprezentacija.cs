@@ -253,8 +253,11 @@ namespace MongoDriverTest
                 {
                     forSave.Sastav += item.SubItems[1].Text;
                     forSave.Sastav += ",";
+                    forSave.SastavIDs += item.SubItems[0].Text;
+                    forSave.SastavIDs += ",";
                 }
                 forSave.Sastav = forSave.Sastav.TrimEnd(',');
+                forSave.SastavIDs = forSave.SastavIDs.TrimEnd(',');
                 forSave.Selektor = StringCleaner.checkString(tbSelektor.Text);
                 forSave.Skracenica = StringCleaner.checkString(tbSkracenica.Text);
                 forSave.SportskaBiografija = StringCleaner.checkString(rtbSportskaBiografija.Text);
@@ -287,7 +290,11 @@ namespace MongoDriverTest
                 }
                 if(slikaReprezentacije != null)
                 {
-                    AuxLib.AddImageToGridFS(slikaReprezentacije, imeSlike, format);
+                    AuxLib.deleteFromGridFS(imeSlike);
+                    if (!AuxLib.AddImageToGridFS(slikaReprezentacije, imeSlike, format))
+                    {
+                        MessageBox.Show("Slika nije ucitana uspesno.");
+                    };
                 }
                 else 
                 {

@@ -22,6 +22,7 @@ namespace MongoDriverTest
     public partial class FDodavanjeIgraca : Form
     {
         private Image slika;
+        private string format;
         public FDodavanjeIgraca()
         {
             InitializeComponent();
@@ -167,10 +168,16 @@ namespace MongoDriverTest
                 var _client = new MongoClient();
                 var _database = _client.GetDatabase("test");
 
-                var collection = _database.GetCollection<BsonDocument>("igraci");
+                var collection = _database.GetCollection<Igrac>("igraci");
                 var filter = new BsonDocument();
-                var document = noviIgrac.ToBsonDocument();
-                collection.InsertOne(document);
+               // var document = noviIgrac.ToBsonDocument();
+                collection.InsertOne(noviIgrac);
+                collection.ReplaceOne(filter, noviIgrac);
+                if(slika != null)
+                {
+                    AuxLib.deleteFromGridFS(noviIgrac._id + "igrac");
+                    AuxLib.AddImageToGridFS(slika, noviIgrac._id + "igrac", format);
+                }
                 MessageBox.Show("Uspesno dodat novi igrac!");
                 
                 // ---- Zatvaranje forme ----
@@ -194,6 +201,7 @@ namespace MongoDriverTest
                 {
                     if (ofd.SafeFileName.Split('.')[1] == "jpg" || ofd.SafeFileName.Split('.')[1] == "png" || ofd.SafeFileName.Split('.')[1] == "jpeg")
                     {
+                        format = ofd.SafeFileName.Split('.')[1];
                         fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
                         slika = Image.FromStream(fs);
                         PbSlikaIgraca.Image = Image.FromStream(fs);

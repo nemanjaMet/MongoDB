@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.TbIme = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@
             this.BtnUbaciSliku = new System.Windows.Forms.Button();
             this.BtnSubmitData = new System.Windows.Forms.Button();
             this.PbSlikaStadiona = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbSlikaStadiona)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +86,8 @@
             this.TbDrzava.Name = "TbDrzava";
             this.TbDrzava.Size = new System.Drawing.Size(117, 22);
             this.TbDrzava.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.TbDrzava, "Morate uneti ime reprezentacije koja postoji!");
+            this.TbDrzava.Leave += new System.EventHandler(this.TbDrzava_Leave);
             // 
             // panel1
             // 
@@ -204,7 +208,7 @@
             this.PbSlikaStadiona.Location = new System.Drawing.Point(23, 222);
             this.PbSlikaStadiona.Name = "PbSlikaStadiona";
             this.PbSlikaStadiona.Size = new System.Drawing.Size(310, 97);
-            this.PbSlikaStadiona.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PbSlikaStadiona.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PbSlikaStadiona.TabIndex = 13;
             this.PbSlikaStadiona.TabStop = false;
             // 
@@ -212,7 +216,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 359);
+            this.ClientSize = new System.Drawing.Size(709, 358);
             this.Controls.Add(this.PbSlikaStadiona);
             this.Controls.Add(this.BtnSubmitData);
             this.Controls.Add(this.BtnUbaciSliku);
@@ -256,5 +260,6 @@
         private System.Windows.Forms.Button BtnUbaciSliku;
         private System.Windows.Forms.Button BtnSubmitData;
         private System.Windows.Forms.PictureBox PbSlikaStadiona;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

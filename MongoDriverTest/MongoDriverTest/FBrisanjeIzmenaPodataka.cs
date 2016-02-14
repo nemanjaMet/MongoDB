@@ -39,7 +39,7 @@ namespace MongoDriverTest
                     collection.DeleteOne(filter);
 
                     // ---- Brisanje slike igraca iz baze ----
-                    string imeSlike = "igrac" + LvIgraci.SelectedItems[0].SubItems[1].Text;
+                    string imeSlike = LvIgraci.SelectedItems[0].SubItems[0].Text + "igrac";
                     AuxLib.deleteFromGridFS(imeSlike);
 
                 }
@@ -105,9 +105,9 @@ namespace MongoDriverTest
 
                     string imeFajla = LvReprezentacije.SelectedItems[0].Text;
                     // Brisanje zastave
-                    AuxLib.deleteFromGridFS("zastava"+imeFajla);
+                    AuxLib.deleteFromGridFS(imeFajla+"zastava");
                     // Brisanje himne
-                    AuxLib.deleteFromGridFS("himna"+imeFajla);
+                    AuxLib.deleteFromGridFS(imeFajla+"himna");
                 }
                 catch (Exception ex)
                 {
@@ -227,7 +227,7 @@ namespace MongoDriverTest
 
                     // Brisanje slike
                     string imeStadiona = LVStadioni.SelectedItems[0].Text;
-                    AuxLib.deleteFromGridFS("stadion" + imeStadiona);
+                    AuxLib.deleteFromGridFS(imeStadiona+"stadion");
                 }
                 catch (Exception ex)
                 {
@@ -261,8 +261,8 @@ namespace MongoDriverTest
                     collection.DeleteOne(filter);
                     
                     // Brisanje slike
-                    string imeSlike = LVTreneri.SelectedItems[0].Text;
-                    AuxLib.deleteFromGridFS("trener" + imeSlike);
+                    string imeSlike = LVTreneri.SelectedItems[0].SubItems[1].Text;
+                    AuxLib.deleteFromGridFS(imeSlike+"trener");
 
                 }
                 catch (Exception ex)

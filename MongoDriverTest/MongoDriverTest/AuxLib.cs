@@ -445,5 +445,28 @@ namespace MongoDriverTest
             var gridFs = new MongoGridFS(database);
             gridFs.Delete(imeFajla);
         }
+
+        public static async void Check(string ime,TextBox TBox)
+        {
+            var _client = new MongoClient();
+            var _database = _client.GetDatabase("test");
+            // mora Nemca da mi kaze gde ih smesta koja kolekcija
+            var collection = _database.GetCollection<Reprezentacija>("reprezentacije");
+            var filter = new BsonDocument() 
+            {
+                {"Ime",ime}
+            };
+
+            var result = await collection.Find(filter).FirstOrDefaultAsync<Reprezentacija>();
+
+            if(result == null)
+            {
+                TBox.BackColor = Color.Red;
+            }
+            else 
+            {
+                TBox.BackColor = Color.Green;
+            }
+        }
     }
 }

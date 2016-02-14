@@ -474,9 +474,6 @@ namespace MongoDriverTest
             FDodavanjeTrenera test = new FDodavanjeTrenera();
             test.ShowDialog();
 
-            FFudbalskaIgra ffi = new FFudbalskaIgra();
-            ffi.ShowDialog();
-
         }
     }
 }

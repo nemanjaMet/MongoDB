@@ -97,7 +97,7 @@ namespace MongoDriverTest.DomainModel
                 collection.InsertOne(document);
                 if (slikaTrenera != null)
                 {
-                    AuxLib.AddImageToGridFS(slikaTrenera, forSave.PunoIme, format);
+                    AuxLib.AddImageToGridFS(slikaTrenera, forSave.PunoIme+"trener", format);
                 }
                 
                 MessageBox.Show("Uspesno dodat novi trener!");

@@ -35,6 +35,7 @@ namespace MongoDB.DomainModel
         [BsonIgnoreIfNull]
         public String OsvojeneMedalje { get; set; } /*Mozda nam treba reprezentacija sa najvecim brojem medalja???*/
         public String Sastav { get; set; } /*Trenutni sastav*/
+        public String SastavIDs { get; set; }
         //public Image SlikaZastave { get; set; } /*ILI MOZDA BOLJE SLIKA GRBA*/
         //public Byte[] Himna { get; set; } /*Ne znam koji tip za mp3*/
     }

@@ -420,9 +420,11 @@ namespace MongoDriverTest
 
         private void button12_Click(object sender, EventArgs e)
         {
-
             FIzborReprezentacijaZaUtakmicu firzu = new FIzborReprezentacijaZaUtakmicu();
             firzu.ShowDialog();
+
+            /*FInfoZaMec test = new FInfoZaMec(firzu, "Srbija", "Nemacka");
+            test.ShowDialog();*/
             /*try
             {
                 var client = new MongoClient("mongodb://localhost");

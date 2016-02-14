@@ -246,7 +246,7 @@ namespace MongoDriverTest
                 forSave.Ime = StringCleaner.checkString(this.tbIme.Text);
                 forSave.Kapiten = StringCleaner.checkString(elKapetano.PunoIme);
                 forSave.Nadimak = StringCleaner.checkString(tbNadimak.Text);
-                forSave.NajboljiStrelac = StringCleaner.checkString(this.tbNadimak.Text);
+                forSave.NajboljiStrelac = StringCleaner.checkString(this.tbNajboljiStrelac.Text);
                 forSave.NajvecaPobedaPoraz = StringCleaner.checkString(this.tbNajvecaPobedaPoraz.Text);
                 forSave.OsvojeneMedalje = StringCleaner.checkString(this.rtbOsvojeneMedalje.Text);
                 foreach (ListViewItem item in this.LVSastav.Items)

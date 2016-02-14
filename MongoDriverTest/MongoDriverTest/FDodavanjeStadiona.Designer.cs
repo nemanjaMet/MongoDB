@@ -204,7 +204,7 @@
             this.PbSlikaStadiona.Location = new System.Drawing.Point(23, 222);
             this.PbSlikaStadiona.Name = "PbSlikaStadiona";
             this.PbSlikaStadiona.Size = new System.Drawing.Size(310, 97);
-            this.PbSlikaStadiona.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PbSlikaStadiona.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PbSlikaStadiona.TabIndex = 13;
             this.PbSlikaStadiona.TabStop = false;
             // 

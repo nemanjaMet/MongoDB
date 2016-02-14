@@ -26,7 +26,7 @@ namespace MongoDriverTest
 
             if (this.LvDomacin.SelectedItems.Count != 0)
             {
-                bool postoji = false;
+                //bool postoji = false;
                 string imeRepke = LvDomacin.SelectedItems[0].Text;
                 // --- Proveravamo da li ta pozicija vec postoji u listi ---
                 if (imeRepke != TbGost.Text)
@@ -49,7 +49,7 @@ namespace MongoDriverTest
         {
             if (this.LvGost.SelectedItems.Count != 0)
             {
-                bool postoji = false;
+                //bool postoji = false;
                 string imeRepke = LvGost.SelectedItems[0].Text;
                 // --- Proveravamo da li ta pozicija vec postoji u listi ---
                 if (imeRepke != TbDomacin.Text)
@@ -84,6 +84,7 @@ namespace MongoDriverTest
             {
                 FInfoZaMec info = new FInfoZaMec(this, TbDomacin.Text, TbGost.Text);
                 info.ShowDialog();
+               // this.Dispose();
             }
             else
             {

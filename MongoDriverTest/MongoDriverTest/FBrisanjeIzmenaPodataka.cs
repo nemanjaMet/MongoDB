@@ -130,8 +130,8 @@ namespace MongoDriverTest
                 {
                     var _client = new MongoClient();
                     var _database = _client.GetDatabase("test");
-                    ObjectId dbID = new ObjectId(LvIgraci.SelectedItems[0].Text);
-                    var collection = _database.GetCollection<BsonDocument>("igraci");
+                    ObjectId dbID = new ObjectId(LvReprezentacije.SelectedItems[0].Text);
+                    var collection = _database.GetCollection<BsonDocument>("reprezentacije");
                     var filter = new BsonDocument()
                     {
 
@@ -189,7 +189,7 @@ namespace MongoDriverTest
                     var _client = new MongoClient();
                     var _database = _client.GetDatabase("test");
                     ObjectId dbID = new ObjectId(LvIgraci.SelectedItems[0].Text);
-                    var collection = _database.GetCollection<BsonDocument>("igraci");
+                    var collection = _database.GetCollection<BsonDocument>("takmicenja");
                     var filter = new BsonDocument()
                     {
 

@@ -36,6 +36,8 @@ namespace MongoDriverTest
 
             test.Dispose();
         }
+
+        
         Thread simulacijaUtakmice;
 
         public void updateMinut(string minut)
@@ -131,7 +133,7 @@ namespace MongoDriverTest
            // BtnSimulacijaUtakmice.Visible = false;
             if (simulacijaUtakmice == null || !simulacijaUtakmice.IsAlive)
             {
-                AlgoritamSimulacije algo = new AlgoritamSimulacije(this);
+                AlgoritamSimulacije algo = new AlgoritamSimulacije(this,domacin.SastavIDs,gost.SastavIDs);
                 simulacijaUtakmice = new Thread(new ThreadStart(algo.simulirajUtakmicu));
                 simulacijaUtakmice.Start();
             }

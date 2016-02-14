@@ -455,14 +455,14 @@ namespace MongoDriverTest
 
         private void infoFormaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Reprezentacija r1 = new Reprezentacija();
-            r1.Ime = "Srbija";
-            Reprezentacija r2 = new Reprezentacija();
-            r2.Ime = "Nemacka";
-            Stadion s1 = new Stadion();
-            s1.Ime = "Test";
-            FInfoZaMec test = new FInfoZaMec(r1,r2,s1);
-            test.ShowDialog();
+            //Reprezentacija r1 = new Reprezentacija();
+            //r1.Ime = "Srbija";
+            //Reprezentacija r2 = new Reprezentacija();
+            //r2.Ime = "Nemacka";
+            //Stadion s1 = new Stadion();
+            //s1.Ime = "Test";
+            //FInfoZaMec test = new FInfoZaMec(r1,r2,s1);
+            //test.ShowDialog();
         }
 
         private void stadionToolStripMenuItem_Click(object sender, EventArgs e)

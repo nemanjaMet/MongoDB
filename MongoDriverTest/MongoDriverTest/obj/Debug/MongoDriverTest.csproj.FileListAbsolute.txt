@@ -70,38 +70,3 @@ E:\GitCopy\Mongo 0.4\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriv
 E:\GitCopy\Mongo 0.4\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FReprezentacija.resources
 E:\GitCopy\Mongo 0.4\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.Properties.Resources.resources
 E:\GitCopy\Mongo 0.4\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.csproj.GenerateResource.Cache
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDriverTest.exe
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDB.Bson.dll
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDB.Driver.Core.dll
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDB.Driver.dll
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\NAudio.dll
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDriverTest.exe.config
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDB.Driver.GridFS.dll
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDB.Driver.Legacy.dll
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDB.Bson.xml
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDB.Driver.xml
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDB.Driver.GridFS.xml
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDB.Driver.Legacy.xml
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\NAudio.xml
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\Interop.WMPLib.dll
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\AxInterop.WMPLib.dll
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.csproj.ResolveComReference.cache
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FBrisanjeIzmenaPodataka.resources
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FDodajTakmicenje.resources
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FDodavanjeIgraca.resources
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FDodavanjeStadiona.resources
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.DomainModel.FDodavanjeTrenera.resources
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FInfoZaMec.resources
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FFudbalskaIgra.resources
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FIzborReprezentacijaZaUtakmicu.resources
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.Form1.resources
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FReprezentacija.resources
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.Properties.Resources.resources
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.csproj.GenerateResource.Cache
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.exe
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.pdb
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDriverTest.pdb
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\Interop.WMPLib.dll
-C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\AxInterop.WMPLib.dll

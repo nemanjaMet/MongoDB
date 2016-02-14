@@ -223,25 +223,25 @@ namespace MongoDriverTest
                 //database access
                 var _client = new MongoClient();
                 var _database = _client.GetDatabase("test");
-                var collection = _database.GetCollection<BsonDocument>("reprezentacije");
+                var collection = _database.GetCollection<Reprezentacija>("reprezentacije");
                 //filters
                 var filterAllCount = new BsonDocument();
-                var filterForUniqueCheck = Builders<BsonDocument>.Filter.Eq("Ime", this.tbIme.Text);
-
+                //var filterForUniqueCheck = Builders<BsonDocument>.Filter.Eq("Ime", this.tbIme.Text);
+                var filter = new BsonDocument()
+                {
+                    {"Ime",tbIme.Text}
+                };
 
                 //test if reprezentacija exists
-                var test = collection.Find(filterForUniqueCheck).Count();
+                var test = collection.Find(filter).FirstOrDefault();
                 
                 var countForID = collection.Count(filterAllCount);
 
                 // model creating
                 Reprezentacija forSave = new Reprezentacija();
                 forSave.FifaRang = Convert.ToInt32(numFifaRang.Value);
-                if (test == 0)
-                {
-                    forSave.id = countForID;
-                }
 
+                forSave.id = 777;
                 forSave.IgracSaNajviseNastupa = StringCleaner.checkString(this.tbIgracSaNajviseNastupa.Text);
                 forSave.Ime = StringCleaner.checkString(this.tbIme.Text);
                 forSave.Kapiten = StringCleaner.checkString(elKapetano.PunoIme);
@@ -266,13 +266,13 @@ namespace MongoDriverTest
                 //Serialization and BsonDocument creation
 
 
-                var document = forSave.ToBsonDocument();
+                //var document = forSave.ToBsonDocument();
 
 
                 // insert or update check.
-                if (test == 0)
+                if (test == null)
                 {
-                    collection.InsertOne(document);
+                    collection.InsertOne(forSave);
                     MessageBox.Show("Reprezentacija :" + forSave.Ime + " uspesno dodata.");
                 }
                 else
@@ -283,9 +283,10 @@ namespace MongoDriverTest
                     //    .CurrentDate("lastModified")
                     //    .Set("","");
                     //var result = await collection.UpdateOneAsync(filter, update);
-
+                    forSave._id = test._id;
+                    
                     //collection.UpdateOne(filterForUniqueCheck, document);
-                    collection.ReplaceOne(filterForUniqueCheck, document);
+                    collection.ReplaceOne(filter, forSave);
                     MessageBox.Show("Reprezentacija :" + forSave.Ime + " uspesno azurirana.");
                 }
                 if(slikaReprezentacije != null)
@@ -312,30 +313,26 @@ namespace MongoDriverTest
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string [] imena = { "Marko","Zoran","Darko","Nemanja","Petar","Milos","Dusan","John","Ronaldo","Messi","Eto","Dragan","Pique","Lucas","Henderson","Gerrard","Pato","Cutinjo","Falcao","Dragojlo","Suarez","Neymar"};
+            string[] pozicije = { "GK", "CB", "CB", "LB", "RB", "LMF", "RMF", "CMF", "DMF", "CF", "SS", "GK", "CB", "CB", "LB", "RB", "LMF", "RMF", "CMF", "DMF", "CF", "SS" };
             if(!testData)
             {
                 var _client = new MongoClient();
                 var _database = _client.GetDatabase("test");
-                var collection = _database.GetCollection<BsonDocument>("igraci");
+                var collection = _database.GetCollection<Igrac>("igraci");
                 var filter = new BsonDocument();
 
                
 
-                for(int i = 0 ; i < 11 ; i++)
+                for(int i = 0 ; i < 22 ; i++)
                 {
-                    var test = collection.Count(filter);
-                    var document = new BsonDocument
-                    {
-                   
-                        {"id",test.ToString()},
-                        {"PunoIme","Test"+test.ToString()},
-                        {"Pozicija","Sve"},
-                        {"TrenutniKlub","Real MadZid"},
-                        {"DatumRodjenja","1.1.1991"}
+                    //Random r = new Random();
+                    Igrac document = new Igrac();
+                    document.PunoIme = imena[i];
+                    document.Pozicija = pozicije[i];
+                    document.DatumRodjenja = DateTime.Now.ToString();
                     
-
-                    };
-                collection.InsertOne(document);
+                    collection.InsertOne(document);
                 }
                 
                 //collection.UpdateOne(filter,document);
@@ -424,17 +421,23 @@ namespace MongoDriverTest
                     var forSpliting = ofd.SafeFileName.Split('.');
                     string imePesme = forSpliting[0];
                     string format = forSpliting[1];
-                    if (format != "mp3")
+                    //if (format != "mp3")
+                    //{
+                    //    MessageBox.Show("Fajl mora biti u mp3 formatu.");
+                    //    return;
+                    //}
+                    if(format == "mp3" || format == "MP3")
                     {
-                        MessageBox.Show("Fajl mora biti u mp3 formatu.");
-                        return;
+                        fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
+
+                        if (AuxLib.AddSoundToGridFS(fs, this.tbIme.Text + "himna", format))
+                        {
+                            MessageBox.Show("Uspesno ste dodali mp3 sadrzaja kao himnu reprezentacije.");
+                        }
                     }
-                    fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
-
-
-                    if (AuxLib.AddSoundToGridFS(fs, this.tbIme.Text+"himna", format))
+                    else 
                     {
-                        MessageBox.Show("Uspesno ste dodali mp3 sadrzaja kao himnu reprezentacije.");
+                        MessageBox.Show("Podrzani format je mp3."); 
                     }
                     
                     

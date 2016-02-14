@@ -32,13 +32,15 @@ namespace MongoDriverTest
         }
         public FInfoZaMec(FIzborReprezentacijaZaUtakmicu staraForma, string domacin, string gost)
         {
+
+            
             InitializeComponent();
 
             domacinIme = domacin;
             gostIme = gost;
-
-
             staraForma.Dispose();
+            
+
         }
         public FInfoZaMec(Reprezentacija domacin, Reprezentacija gost, Stadion stadion)
         {

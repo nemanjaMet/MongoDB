@@ -266,9 +266,10 @@
             "DMF",
             "CMF",
             "LMF",
+            "RMF",
             "AMF",
-            "LW",
-            "RW",
+            "LWS",
+            "RWS",
             "SS",
             "CF"});
             this.CbPosition.Location = new System.Drawing.Point(349, 31);

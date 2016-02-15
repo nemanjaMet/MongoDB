@@ -29,15 +29,6 @@ namespace MongoDriverTest
         {
             forma = ffi;
 
-            //string idIgraca = "56befc3ab309b02250124487,56befc62b309b02250124488,56befc8eb309b02250124489," +
-            //"56befcd7b309b0225012448a,56befd6db309b0225012448b,56befdd0b309b0225012448c," +
-            //"56befe10b309b0225012448d,56befe2fb309b0225012448e,56befe53b309b0225012448f,56befea4b309b02250124490,56befeceb309b02250124491,56beff42b309b02250124492," +
-            //"56beffbeb309b02250124494,56bf0012b309b02250124495,56bf004eb309b02250124496," +
-            //"56bf009db309b02250124497,56bf00dfb309b02250124498,56bf011cb309b02250124499,56bf0151b309b0225012449a," +
-            //"56bf017bb309b0225012449b,56bf01afb309b0225012449c," +
-            //"56bf01d2b309b0225012449d,56bf01f4b309b0225012449e,56bf021bb309b0225012449f,56bf024db309b022501244a0,56bf026bb309b022501244a1,56bf02a6b309b022501244a2,56bf02fdb309b022501244a3," +
-            //"56bf0333b309b022501244a4,56bf0353b309b022501244a5,56bf037cb309b022501244a6,56bf0398b309b022501244a7,56bf03c6b309b022501244a8,56bf03f9b309b022501244a9";
-
             // Za domace
             getNamesAndPosition(idDomacini, true);
             // Za goste
@@ -47,9 +38,50 @@ namespace MongoDriverTest
         // ---- Simuliranje utakmice ----
         public void simulirajUtakmicu()
         {
-            string[] domaciStartnih11 = izaberiIgrace(true);
+            // ---- Brojaci ----
+            int domaciPosed = 0;
+            int gostiPosed = 0;
+            int brojNapadaDomaci = 0;
+            int brojNapadaGosti = 0;
+            int brojSredinaDomaci = 0;
+            int brojSredinaGosti = 0;
+            int brojOdbranaDomaci = 0;
+            int brojOdbranaGosti = 0;
+           // int brojGolSansiDomaci = 0;
+           // int brojGolSansiGosti = 0;
+
+            string[] domaciStartnih11 = new string[11];
+            int brojKoraka = 5;
+            while (brojKoraka > 0)
+            {
+               domaciStartnih11 = izaberiIgrace(true);
+               if (!domaciStartnih11.Contains("-1"))              
+                   break;
+              
+            }
+            if (brojKoraka == 0)
+            {
+                MessageBox.Show("Doslo je do greske prilikom izbora prvog tima kod domacina!");
+                forma.Close();
+                return;
+            }
+
             Thread.Sleep(500);
-            string[] gostiStartnih11 = izaberiIgrace(false);
+            brojKoraka = 5;
+            string[] gostiStartnih11 = new string[11];
+            while (brojKoraka > 0)
+            {
+                gostiStartnih11 = izaberiIgrace(false);
+                if (!gostiStartnih11.Contains("-1"))
+                    break;
+
+            }
+            if (brojKoraka == 0)
+            {
+                MessageBox.Show("Doslo je do greske prilikom izbora prvog tima kod domacina!");
+                forma.Close();
+                return;
+            }
              
             double[] domacin = new double[11];
             double[] gost = new double[11];
@@ -86,12 +118,12 @@ namespace MongoDriverTest
                 if (napadaTim == 1)
                 {
                     nastavakAkcije = true;
-                    nikoNemaAkciju = false;                   
+                    nikoNemaAkciju = false;
                 }
                 else if (napadaTim == 2)
                 {
                     nastavakAkcije = true;
-                    nikoNemaAkciju = false;                   
+                    nikoNemaAkciju = false;
                 }
 
                 if (!nikoNemaAkciju & nastavakAkcije)
@@ -100,6 +132,8 @@ namespace MongoDriverTest
                     if (napadaTim == 1)
                     {
                         nastavakAkcije = sredinaPobedjena(domacin, gost);
+                        domaciPosed += 1;
+                        brojNapadaDomaci++;
 
                         // Update-ujemo dogadjaj na formu
                         forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i+1).ToString() + "' DOMACIN: Zapocinje akciju");
@@ -108,7 +142,8 @@ namespace MongoDriverTest
                     else if (napadaTim == 2)
                     {
                         nastavakAkcije = sredinaPobedjena(gost, domacin);
-
+                        gostiPosed += 1;
+                        brojNapadaGosti++;
                         // Update-ujemo dogadjaj na formu
                         forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: Zapocinje akciju");
                         Thread.Sleep(500);
@@ -121,7 +156,8 @@ namespace MongoDriverTest
                         if (napadaTim == 1)
                         {
                             nastavakAkcije = odbranaPobedjena(domacin, gost);
-
+                            domaciPosed += 2;
+                            brojSredinaDomaci++;
                             // Update-ujemo dogadjaj na formu
                             forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' DOMACIN: Lepo razmenjuju pasove i prolaze centar");
                             Thread.Sleep(500);
@@ -129,7 +165,8 @@ namespace MongoDriverTest
                         else if (napadaTim == 2)
                         {
                             nastavakAkcije = odbranaPobedjena(gost, domacin);
-
+                            gostiPosed += 2;
+                            brojSredinaGosti++;
                             // Update-ujemo dogadjaj na formu
                             forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: Lepo razmenjuju pasove i prolaze centar");
                             Thread.Sleep(500);
@@ -141,7 +178,8 @@ namespace MongoDriverTest
                             if (napadaTim == 1)
                             {
                                 nastavakAkcije = odbranaGolmana(domacin, gost);
-
+                                domaciPosed += 3;
+                                brojOdbranaDomaci++;
                                 // Update-ujemo dogadjaj na formu
                                 forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' DOMACIN: Prolaze protivnicku odbranu");
                                 Thread.Sleep(500);
@@ -149,7 +187,8 @@ namespace MongoDriverTest
                             else if (napadaTim == 2)
                             {
                                 nastavakAkcije = odbranaGolmana(gost, domacin);
-
+                                gostiPosed += 3;
+                                brojOdbranaGosti++;
                                 // Update-ujemo dogadjaj na formu
                                 forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: Prolaze protivnicku odbranu");
                                 Thread.Sleep(500);
@@ -160,27 +199,33 @@ namespace MongoDriverTest
                             {
                                 if (napadaTim == 1)
                                 {
+                                    string strelac = KoDajeGol(domacin, domaciStartnih11, true);
                                     domacinGolovi++;
                                     // Update-ujemo dogadjaj na formu
                                     delUpdateFormInformations updateGol = new delUpdateFormInformations(forma.updateDomacinRez);
                                     forma.RezultatDomacin.BeginInvoke(updateGol, domacinGolovi.ToString());
                                     Thread.Sleep(500);
-                                    forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' DOMACIN: GOOOL !!!");
-                                    Thread.Sleep(500);                                   
+                                    forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' DOMACIN: GOOOL !!! Strelac: " + strelac);
+                                    Thread.Sleep(1000);                                   
                                     gost = noviSkilovi(gost, false, 2);
                                     updateSastavForm(gost, gostiStartnih11, false);
+                                  //  Thread.Sleep(500);
+                                   // updateSastavForm(domacin, domaciStartnih11, true);
                                 }
                                 else if (napadaTim == 2)
                                 {
+                                    string strelac = KoDajeGol(gost, gostiStartnih11, false);
                                     gostGolovi++;
                                     // Update-ujemo dogadjaj na formu
                                     delUpdateFormInformations updateGol = new delUpdateFormInformations(forma.updateGostRez);
                                     forma.RezultatGost.BeginInvoke(updateGol, gostGolovi.ToString());
                                     Thread.Sleep(500);
-                                    forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: GOOOL !!!");
-                                    Thread.Sleep(500);
+                                    forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: GOOOL !!! Strelac: " + strelac);
+                                    Thread.Sleep(1000);
                                     domacin = noviSkilovi(domacin, true, 2);
                                     updateSastavForm(domacin, domaciStartnih11, true);
+                                    //Thread.Sleep(500);
+                                   // updateSastavForm(gost, gostiStartnih11, false);
                                 }
                             }
                             else
@@ -259,6 +304,19 @@ namespace MongoDriverTest
                 }
 
             }
+            int ukupniPosed = domaciPosed + gostiPosed;
+            int procenatDomaci = (int)Math.Round(Math.Round(domaciPosed / (double)ukupniPosed, 2)*100);
+            int procenatGosti = 100 - procenatDomaci;
+            string statistika = "STATISTIKA" + Environment.NewLine;
+            statistika += Environment.NewLine + "Domaci - Gosti" + Environment.NewLine;
+            statistika += procenatDomaci + " - Posed lopte - " + procenatGosti + Environment.NewLine;
+            statistika += brojNapadaDomaci + " - Broj napada - " + brojNapadaGosti + Environment.NewLine;
+            statistika += (brojNapadaDomaci - brojSredinaDomaci).ToString() + " - Broj izgubljenih lopti na sredini - " + (brojNapadaGosti - brojSredinaGosti).ToString() + Environment.NewLine;
+            statistika += (brojSredinaGosti - brojOdbranaGosti).ToString() + " - Broj sprecenih gol sansi - " + (brojSredinaDomaci - brojOdbranaDomaci).ToString() + Environment.NewLine;
+            statistika += brojOdbranaDomaci + " - Broj sansi za gol - " + brojOdbranaGosti + Environment.NewLine;
+           // MessageBox.Show(statistika, "Statistika");
+            forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, statistika);
+            Thread.Sleep(500);
         }
 
         // ----- PRVI KORAK ----
@@ -670,8 +728,35 @@ namespace MongoDriverTest
                     noveOcene += (i + 1).ToString() + ". " + podela[1] + " " + teamSkills[i].ToString() + ';';
                 }
             }
-            noveOcene = noveOcene.TrimEnd(';');
+            //noveOcene = noveOcene.TrimEnd(';');
 
+           // string rezervniIgraci = "" + Environment.NewLine;
+           // rezervniIgraci += Environment.NewLine + "Rezervni igraci" + Environment.NewLine;
+            string rezervniIgraci = "";
+            if (domacin)
+            {
+                foreach (string igrac in idsNamePosDomaci)
+                {
+                    string[] podela = igrac.Split(separators, StringSplitOptions.None);
+                    if (!noveOcene.Contains(podela[1]))
+                    {
+                        rezervniIgraci += podela[1] + ";";
+                    }
+                }
+            }
+            else
+            {
+                foreach (string igrac in idsNamePosGosti)
+                {
+                    string[] podela = igrac.Split(separators, StringSplitOptions.None);
+                    if (!noveOcene.Contains(podela[1]))
+                    {
+                        rezervniIgraci += podela[1] + ";";
+                    }
+                }
+            }
+            noveOcene += rezervniIgraci;
+            noveOcene = noveOcene.TrimEnd(';');
             // ---- Update-ovanje ocene timova na formi
             if (domacin)
             {
@@ -687,6 +772,66 @@ namespace MongoDriverTest
                 Thread.Sleep(500);
             }
   
+        }
+
+        // ---- Izbor strelca gola ----
+        string KoDajeGol(double[] ekipa, string[] indeksSkill, bool domacin)
+        {
+            int[] najbolja3 = new int[3];
+            najbolja3[0] = -1;
+            najbolja3[1] = -1;
+            najbolja3[2] = -1;
+
+            int k = 0;
+
+            Random rand = new Random();
+
+            while (k < 3)
+            {
+                double max = 0;
+                int indeks = -1;
+               // max = ekipa[0];
+                for (int i = 0; i < ekipa.Length; i++)
+                {
+                    if (max <= ekipa[i] && !najbolja3.Contains(i))
+                    {
+ 
+                            max = ekipa[i];
+                            indeks = i;                   
+                    }
+                }
+
+                if (indeks == 0)
+                {
+                    while (!najbolja3.Contains(indeks))
+                    {
+                        indeks = rand.Next(0, 10);
+                    }
+                }
+
+                najbolja3[k] = indeks;               
+                k++;
+            }
+
+            int pos = rand.Next(0, 2);
+            string[] splitedIndeksSkill = indeksSkill[najbolja3[pos]].Split(':');
+            int indeksIgraca = Convert.ToInt32(splitedIndeksSkill[0]);
+
+            string strelac = "";
+            string[] separators = new string[] { "<&>" };
+            if (domacin)
+            {
+                //string[] splitedIdImePos = idsNamePosDomaci[indeksIgraca].Split();
+                string[] splitedIdImePos = idsNamePosDomaci[indeksIgraca].Split(separators, StringSplitOptions.None);
+                strelac = splitedIdImePos[1];
+            }
+            else
+            {
+                string[] splitedIdImePos = idsNamePosGosti[indeksIgraca].Split(separators, StringSplitOptions.None);
+                strelac = splitedIdImePos[1];
+            }
+
+            return strelac;
         }
 
     }

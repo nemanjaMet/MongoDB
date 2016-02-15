@@ -63,22 +63,53 @@ namespace MongoDriverTest
             {
                 if (i == 0)
                 {
-                    textOutput += "GK";
+                    textOutput += "GK   ";
                 }
-                else if (i < 5)
+                else if (i == 1)
                 {
-                    textOutput += "DF";
+                    textOutput += "LB    ";
                 }
-                else if (i < 9)
+                else if (i > 1 && i < 4)
                 {
-                    textOutput += "MF";
+                    textOutput += "CB   ";
+                }
+                else if (i == 4)
+                {
+                    textOutput += "RB   ";
+                }
+                else if ( i == 5)
+                {
+                    textOutput += "LMF ";
+                }
+                else if (i > 5 && i < 8)
+                {
+                    textOutput += "CMF";
+                }
+                else if (i == 8)
+                {
+                    textOutput += "RMF";
                 }
                 else if (i < 11)
                 {
-                    textOutput += "CF";
+                    textOutput += "CF   ";
                 }
 
                 textOutput += "   " + skilovi[i] + Environment.NewLine ;
+            }
+
+            string rezervniIgraci = "" + Environment.NewLine;
+            rezervniIgraci += "Rezervni igraci" + Environment.NewLine;
+            bool klupa = false;
+            for (int i = 11; i < skilovi.Length; i++)
+            {
+                klupa = true;
+                rezervniIgraci += (i + 1).ToString() + ". " + skilovi[i] + Environment.NewLine;
+                // rezervniIgraci += Environment.NewLine + "Rezervni igraci" + Environment.NewLine;
+            }
+
+            if (klupa)
+            {
+                textOutput += rezervniIgraci;
             }
 
             RtbSastavDomacin.Text = textOutput;
@@ -92,22 +123,53 @@ namespace MongoDriverTest
             {
                 if (i == 0)
                 {
-                    textOutput += "GK";
+                    textOutput += "GK   ";
                 }
-                else if (i < 5)
+                else if (i == 1)
                 {
-                    textOutput += "DF";
+                    textOutput += "LB    ";
                 }
-                else if (i < 9)
+                else if (i > 1 && i < 4)
                 {
-                    textOutput += "MF";
+                    textOutput += "CB   ";
+                }
+                else if (i == 4)
+                {
+                    textOutput += "RB   ";
+                }
+                else if (i == 5)
+                {
+                    textOutput += "LMF ";
+                }
+                else if (i > 5 && i < 8)
+                {
+                    textOutput += "CMF";
+                }
+                else if (i == 8)
+                {
+                    textOutput += "RMF";
                 }
                 else if (i < 11)
                 {
-                    textOutput += "CF";
-                }
+                    textOutput += "CF   ";
+                }               
 
                 textOutput += "   " + skilovi[i] + Environment.NewLine;
+            }
+
+            string rezervniIgraci = "" + Environment.NewLine;
+            rezervniIgraci += "Rezervni igraci" + Environment.NewLine;
+            bool klupa = false;
+            for (int i = 11; i < skilovi.Length; i++)
+            {
+                klupa = true;
+                rezervniIgraci += (i + 1).ToString() + ". " + skilovi[i] + Environment.NewLine;
+                // rezervniIgraci += Environment.NewLine + "Rezervni igraci" + Environment.NewLine;
+            }
+
+            if (klupa)
+            {
+                textOutput += rezervniIgraci;
             }
 
             RtbSastavGost.Text = textOutput;

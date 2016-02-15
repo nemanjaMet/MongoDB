@@ -365,7 +365,10 @@ namespace MongoDriverTest
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string [] imena = { "Vladimir Stojkovic","Nemanja Vidic","Neven Subotic","Aleksandar Kolarov","Branislav Ivanovic",
+
+            TestPodaci.dodajIgrace();
+
+           /* string [] imena = { "Vladimir Stojkovic","Nemanja Vidic","Neven Subotic","Aleksandar Kolarov","Branislav Ivanovic",
                                   "Dusan Tadic","Zoran Tosic","Dejan Stankovic","Nemanja Matic","Aleksandar Mitrovic", "Adem Ljajic",
                                   "Simon Minjole","Mamadu Sako","Martin Skrtel","Alberto Moreno","N. Klajn","Cutinho","Adam Lalana",
                                   "Jordan Henderson","Lucas Leiva","Daniel Starigde","Robert Firmino"};
@@ -400,7 +403,7 @@ namespace MongoDriverTest
                 AuxLib.UpdateIgraciListView(this.LvIgraci, filterForListView);
                 MessageBox.Show("Done" + "Count:" + collection.Count(filter).ToString());
             //}
-            
+            */
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

@@ -30,7 +30,6 @@
         {
             this.TbPanel = new System.Windows.Forms.TabControl();
             this.TpIgrac = new System.Windows.Forms.TabPage();
-            this.BtnIzmeniIgraca = new System.Windows.Forms.Button();
             this.BtnIzbrisiIgraca = new System.Windows.Forms.Button();
             this.LvIgraci = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -41,7 +40,6 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TpReprezentacije = new System.Windows.Forms.TabPage();
-            this.BtnIzmeniReprezentaciju = new System.Windows.Forms.Button();
             this.BtnIzbrisiReprezentaciju = new System.Windows.Forms.Button();
             this.LvReprezentacije = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,7 +47,6 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TpTakmicenja = new System.Windows.Forms.TabPage();
-            this.BtnIzmeniTakmicenje = new System.Windows.Forms.Button();
             this.BtnIzbrisiTakmicenje = new System.Windows.Forms.Button();
             this.LvTakmicanja = new System.Windows.Forms.ListView();
             this.Ime_takmicenja = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -76,7 +73,6 @@
             this.Trenutni_klub = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Trenerska_karijera = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Uspesi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
             this.TbPanel.SuspendLayout();
             this.TpIgrac.SuspendLayout();
             this.TpReprezentacije.SuspendLayout();
@@ -101,7 +97,6 @@
             // 
             // TpIgrac
             // 
-            this.TpIgrac.Controls.Add(this.BtnIzmeniIgraca);
             this.TpIgrac.Controls.Add(this.BtnIzbrisiIgraca);
             this.TpIgrac.Controls.Add(this.LvIgraci);
             this.TpIgrac.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -113,19 +108,9 @@
             this.TpIgrac.Text = "Igraci";
             this.TpIgrac.UseVisualStyleBackColor = true;
             // 
-            // BtnIzmeniIgraca
-            // 
-            this.BtnIzmeniIgraca.Location = new System.Drawing.Point(6, 369);
-            this.BtnIzmeniIgraca.Name = "BtnIzmeniIgraca";
-            this.BtnIzmeniIgraca.Size = new System.Drawing.Size(202, 33);
-            this.BtnIzmeniIgraca.TabIndex = 2;
-            this.BtnIzmeniIgraca.Text = "Izmeni igraca";
-            this.BtnIzmeniIgraca.UseVisualStyleBackColor = true;
-            this.BtnIzmeniIgraca.Click += new System.EventHandler(this.BtnIzmeniIgraca_Click);
-            // 
             // BtnIzbrisiIgraca
             // 
-            this.BtnIzbrisiIgraca.Location = new System.Drawing.Point(694, 369);
+            this.BtnIzbrisiIgraca.Location = new System.Drawing.Point(311, 369);
             this.BtnIzbrisiIgraca.Name = "BtnIzbrisiIgraca";
             this.BtnIzbrisiIgraca.Size = new System.Drawing.Size(203, 33);
             this.BtnIzbrisiIgraca.TabIndex = 1;
@@ -190,7 +175,6 @@
             // 
             // TpReprezentacije
             // 
-            this.TpReprezentacije.Controls.Add(this.BtnIzmeniReprezentaciju);
             this.TpReprezentacije.Controls.Add(this.BtnIzbrisiReprezentaciju);
             this.TpReprezentacije.Controls.Add(this.LvReprezentacije);
             this.TpReprezentacije.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -202,19 +186,9 @@
             this.TpReprezentacije.Text = "Reprezentacije";
             this.TpReprezentacije.UseVisualStyleBackColor = true;
             // 
-            // BtnIzmeniReprezentaciju
-            // 
-            this.BtnIzmeniReprezentaciju.Location = new System.Drawing.Point(6, 370);
-            this.BtnIzmeniReprezentaciju.Name = "BtnIzmeniReprezentaciju";
-            this.BtnIzmeniReprezentaciju.Size = new System.Drawing.Size(188, 32);
-            this.BtnIzmeniReprezentaciju.TabIndex = 2;
-            this.BtnIzmeniReprezentaciju.Text = "Izmeni reprezentaciju";
-            this.BtnIzmeniReprezentaciju.UseVisualStyleBackColor = true;
-            this.BtnIzmeniReprezentaciju.Click += new System.EventHandler(this.BtnIzmeniReprezentaciju_Click);
-            // 
             // BtnIzbrisiReprezentaciju
             // 
-            this.BtnIzbrisiReprezentaciju.Location = new System.Drawing.Point(672, 370);
+            this.BtnIzbrisiReprezentaciju.Location = new System.Drawing.Point(337, 369);
             this.BtnIzbrisiReprezentaciju.Name = "BtnIzbrisiReprezentaciju";
             this.BtnIzbrisiReprezentaciju.Size = new System.Drawing.Size(181, 33);
             this.BtnIzbrisiReprezentaciju.TabIndex = 1;
@@ -261,7 +235,6 @@
             // 
             // TpTakmicenja
             // 
-            this.TpTakmicenja.Controls.Add(this.BtnIzmeniTakmicenje);
             this.TpTakmicenja.Controls.Add(this.BtnIzbrisiTakmicenje);
             this.TpTakmicenja.Controls.Add(this.LvTakmicanja);
             this.TpTakmicenja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -273,19 +246,9 @@
             this.TpTakmicenja.Text = "Takmicenja";
             this.TpTakmicenja.UseVisualStyleBackColor = true;
             // 
-            // BtnIzmeniTakmicenje
-            // 
-            this.BtnIzmeniTakmicenje.Location = new System.Drawing.Point(3, 369);
-            this.BtnIzmeniTakmicenje.Name = "BtnIzmeniTakmicenje";
-            this.BtnIzmeniTakmicenje.Size = new System.Drawing.Size(225, 33);
-            this.BtnIzmeniTakmicenje.TabIndex = 2;
-            this.BtnIzmeniTakmicenje.Text = "Izmeni takmicenje";
-            this.BtnIzmeniTakmicenje.UseVisualStyleBackColor = true;
-            this.BtnIzmeniTakmicenje.Click += new System.EventHandler(this.BtnIzmeniTakmicenje_Click);
-            // 
             // BtnIzbrisiTakmicenje
             // 
-            this.BtnIzbrisiTakmicenje.Location = new System.Drawing.Point(706, 369);
+            this.BtnIzbrisiTakmicenje.Location = new System.Drawing.Point(298, 369);
             this.BtnIzbrisiTakmicenje.Name = "BtnIzbrisiTakmicenje";
             this.BtnIzbrisiTakmicenje.Size = new System.Drawing.Size(191, 33);
             this.BtnIzbrisiTakmicenje.TabIndex = 1;
@@ -474,21 +437,11 @@
             // 
             this.Uspesi.Text = "Uspesi";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(153, 485);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(271, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Dodati brisanje slika i muzike iz gridFS-a kad se to doda!";
-            // 
             // FBrisanjeIzmenaPodataka
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 542);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.TbPanel);
             this.Name = "FBrisanjeIzmenaPodataka";
             this.Text = "FBrisanjePodataka";
@@ -500,7 +453,6 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -530,9 +482,6 @@
         private System.Windows.Forms.ColumnHeader Ime_takmicenja;
         private System.Windows.Forms.ColumnHeader Opis;
         private System.Windows.Forms.ColumnHeader Spisak_drzava;
-        private System.Windows.Forms.Button BtnIzmeniIgraca;
-        private System.Windows.Forms.Button BtnIzmeniReprezentaciju;
-        private System.Windows.Forms.Button BtnIzmeniTakmicenje;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ListView LVStadioni;
@@ -554,6 +503,5 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ColumnHeader Identifikacija;
-        private System.Windows.Forms.Label label1;
     }
 }

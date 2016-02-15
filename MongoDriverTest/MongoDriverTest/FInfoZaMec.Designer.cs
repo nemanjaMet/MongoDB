@@ -72,32 +72,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(86, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 13);
+            this.label1.Size = new System.Drawing.Size(148, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Domaca reprezentacija";
             // 
             // RTBDomacinInfo
             // 
+            this.RTBDomacinInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RTBDomacinInfo.Location = new System.Drawing.Point(27, 276);
             this.RTBDomacinInfo.Name = "RTBDomacinInfo";
+            this.RTBDomacinInfo.ReadOnly = true;
             this.RTBDomacinInfo.Size = new System.Drawing.Size(255, 215);
             this.RTBDomacinInfo.TabIndex = 4;
             this.RTBDomacinInfo.Text = "";
             // 
             // RTBGostInfo
             // 
+            this.RTBGostInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RTBGostInfo.Location = new System.Drawing.Point(600, 276);
             this.RTBGostInfo.Name = "RTBGostInfo";
+            this.RTBGostInfo.ReadOnly = true;
             this.RTBGostInfo.Size = new System.Drawing.Size(255, 215);
             this.RTBGostInfo.TabIndex = 5;
             this.RTBGostInfo.Text = "";
             // 
             // RTBStadionInfo
             // 
+            this.RTBStadionInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RTBStadionInfo.Location = new System.Drawing.Point(310, 276);
             this.RTBStadionInfo.Name = "RTBStadionInfo";
+            this.RTBStadionInfo.ReadOnly = true;
             this.RTBStadionInfo.Size = new System.Drawing.Size(255, 215);
             this.RTBStadionInfo.TabIndex = 6;
             this.RTBStadionInfo.Text = "";
@@ -105,18 +112,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(416, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(54, 16);
             this.label2.TabIndex = 7;
             this.label2.Text = "Stadion";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(673, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 13);
+            this.label3.Size = new System.Drawing.Size(156, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Gostujuca reprezentacija";
             // 

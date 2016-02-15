@@ -26,6 +26,60 @@ namespace MongoDriverTest
         public FDodavanjeIgraca()
         {
             InitializeComponent();
+
+            label11.Visible = false;
+        }
+
+        public FDodavanjeIgraca(Igrac najboljiIgrac)
+        {
+            InitializeComponent();
+
+            BtnDodajIgraca.Visible = false;
+            BtnDodajPoziciju.Visible = false;
+            BtnIzbrisiPoziciju.Visible = false;
+            BtnUcitajSliku.Visible = false;
+            CbPosition.Visible = false;
+
+            try
+            {
+                TbPunoIme.Text = najboljiIgrac.PunoIme;
+                TbPunoIme.ReadOnly = true;
+                TbVisina.Text = najboljiIgrac.Visina;
+                TbVisina.ReadOnly = true;
+                TbTrenutniKlub.Text = najboljiIgrac.TrenutniKlub;
+                TbTrenutniKlub.ReadOnly = true;
+                TbMestoRodjenja.Text = najboljiIgrac.MestoRodjenja;
+                TbMestoRodjenja.ReadOnly = true;
+                RtbSportksaBiografija.Text = najboljiIgrac.SportskaBiografija;
+                RtbSportksaBiografija.ReadOnly = true;
+                RtbReprezentativnaKarijera.Text = najboljiIgrac.ReprezentativnaKarijera;
+                RtbReprezentativnaKarijera.ReadOnly = true;
+                RtbStatistika.Text = najboljiIgrac.Statistika;
+                RtbStatistika.ReadOnly = true;
+                RtbTrofeji.Text = najboljiIgrac.Trofeji;
+                RtbTrofeji.ReadOnly = true;
+                DpDatumRodjenja.Text = najboljiIgrac.DatumRodjenja;
+
+                string[] pozicijeIgraca = najboljiIgrac.Pozicija.Split(',');
+                
+                foreach (string pozicija in pozicijeIgraca)
+                {
+                    ListViewItem lv1 = new ListViewItem(pozicija);
+                    LvPozicijeIgraca.Items.Add(lv1);
+                }
+
+                PbSlikaIgraca.Image = AuxLib.LoadImageFromGridFS(najboljiIgrac._id + "igrac");
+               // PbSlikaIgraca.Image = AuxLib.LoadImageFromGridFS("Srbijazastava");
+                PbSlikaIgraca.Left = 100;
+                PbSlikaIgraca.Top = 240;
+                PbSlikaIgraca.Width = 200;
+                PbSlikaIgraca.Height = 150;
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.ToString());
+            }
+
         }
 
         // --- Brisanje pozicije iz listView-a
@@ -139,6 +193,7 @@ namespace MongoDriverTest
             {
                 pozicije += lvi.Text + ", ";
             }
+            pozicije = pozicije.TrimEnd(' ');
             pozicije = pozicije.TrimEnd(',');
 
             // ---- Ubacujemo podatke u objekat ----

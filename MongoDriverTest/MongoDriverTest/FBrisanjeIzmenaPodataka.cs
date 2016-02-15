@@ -64,29 +64,7 @@ namespace MongoDriverTest
 
         private void BtnIzmeniIgraca_Click(object sender, EventArgs e)
         {
-            if (LvIgraci.SelectedItems.Count != 0)
-            {
-                try
-                {
-                    var _client = new MongoClient();
-                    var _database = _client.GetDatabase("test");
-                    ObjectId dbID = new ObjectId(LvIgraci.SelectedItems[0].Text);
-                    var collection = _database.GetCollection<BsonDocument>("igraci");
-                    var filter = new BsonDocument()
-                    {
-                        {"_id",dbID}
-                    };
-                    collection.DeleteOne(filter);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Selektuj igraca kog hoces da izmenis!");
-            }
+
         }
 
         private void BtnIzbrisiReprezentaciju_Click(object sender, EventArgs e)
@@ -146,31 +124,7 @@ namespace MongoDriverTest
 
         private void BtnIzmeniReprezentaciju_Click(object sender, EventArgs e)
         {
-            if (LvReprezentacije.SelectedItems.Count != 0)
-            {
-                try
-                {
-                    var _client = new MongoClient();
-                    var _database = _client.GetDatabase("test");
-                    ObjectId dbID = new ObjectId(LvReprezentacije.SelectedItems[0].Text);
-                    var collection = _database.GetCollection<BsonDocument>("reprezentacije");
-                    var filter = new BsonDocument()
-                    {
 
-                        {"_id",dbID}
-
-                    };
-                    collection.DeleteOne(filter);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Selektuj igraca kog hoces da izmenis!");
-            }
         }
 
         private void BtnIzbrisiTakmicenje_Click(object sender, EventArgs e)
@@ -204,31 +158,7 @@ namespace MongoDriverTest
 
         private void BtnIzmeniTakmicenje_Click(object sender, EventArgs e)
         {
-            if (LvTakmicanja.SelectedItems.Count != 0)
-            {
-                try
-                {
-                    var _client = new MongoClient();
-                    var _database = _client.GetDatabase("test");
-                    ObjectId dbID = new ObjectId(LvIgraci.SelectedItems[0].Text);
-                    var collection = _database.GetCollection<BsonDocument>("takmicenja");
-                    var filter = new BsonDocument()
-                    {
 
-                        {"_id",dbID}
-
-                    };
-                    collection.DeleteOne(filter);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Selektuj igraca kog hoces da izmenis!");
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)

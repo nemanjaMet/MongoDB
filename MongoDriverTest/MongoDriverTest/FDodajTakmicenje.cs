@@ -129,12 +129,12 @@ namespace MongoDriverTest
             try
             {
                 Takmicenje novoTakmicenje = new Takmicenje();
-                novoTakmicenje.Ime = ime;
-                novoTakmicenje.Opis = opis;
-                novoTakmicenje.SpisakDrzava = spisakDrzava;
-                novoTakmicenje.SistemIgranja = sysIgranja;
-                novoTakmicenje.PoslednjiPobednik = posPobednik;
-                novoTakmicenje.Statistika = statistika;
+                novoTakmicenje.Ime = StringCleaner.checkString(ime);
+                novoTakmicenje.Opis = StringCleaner.checkString(opis);
+                novoTakmicenje.SpisakDrzava = StringCleaner.checkString(spisakDrzava);
+                novoTakmicenje.SistemIgranja = StringCleaner.checkString(sysIgranja);
+                novoTakmicenje.PoslednjiPobednik = StringCleaner.checkString(posPobednik);
+                novoTakmicenje.Statistika = StringCleaner.checkString(statistika);
 
                 var client = new MongoClient();
                 var database = client.GetDatabase("test");

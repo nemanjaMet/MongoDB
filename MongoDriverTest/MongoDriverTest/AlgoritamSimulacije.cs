@@ -12,6 +12,7 @@ using MongoDriverTest.DomainModel;
 using MongoDB;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace MongoDriverTest
 {
@@ -24,6 +25,7 @@ namespace MongoDriverTest
         int brojIgracaGosti = 0;
         string[] idsNamePosDomaci;
         string[] idsNamePosGosti;
+        FileStream goalSound;
 
         public AlgoritamSimulacije(FFudbalskaIgra ffi,string idDomacini,string idGosti)
         {
@@ -33,12 +35,24 @@ namespace MongoDriverTest
             getNamesAndPosition(idDomacini, true);
             // Za goste
             getNamesAndPosition(idGosti, false);
+
+            try
+            {
+               goalSound = new System.IO.FileStream("GoalSound.mp3", FileMode.Open, FileAccess.Read);
+               
+               //stream = new NAudio.Wave.BlockAlignReductionStream(pcm);
+                  
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Doslo je do greske priliko ucitavanja zvuka za gol!");
+            }
         }
 
         // ---- Simuliranje utakmice ----
         public void simulirajUtakmicu()
-        {
-            // ---- Brojaci ----
+        {          
+            // ---- Brojaci za statistiku ----
             int domaciPosed = 0;
             int gostiPosed = 0;
             int brojNapadaDomaci = 0;
@@ -47,22 +61,23 @@ namespace MongoDriverTest
             int brojSredinaGosti = 0;
             int brojOdbranaDomaci = 0;
             int brojOdbranaGosti = 0;
-           // int brojGolSansiDomaci = 0;
-           // int brojGolSansiGosti = 0;
 
             string[] domaciStartnih11 = new string[11];
             int brojKoraka = 5;
             while (brojKoraka > 0)
             {
                domaciStartnih11 = izaberiIgrace(true);
-               if (!domaciStartnih11.Contains("-1"))              
+               if (domaciStartnih11 != null)              
                    break;
-              
+               brojKoraka--;
             }
+            // ---- Ukoliko postoji greska prilikom izbora tima ----
             if (brojKoraka == 0)
             {
-                MessageBox.Show("Doslo je do greske prilikom izbora prvog tima kod domacina!");
-                forma.Close();
+                delUpdateFormInformations simulacijaGreska = new delUpdateFormInformations(forma.SimulacijaGreska);
+                forma.BeginInvoke(simulacijaGreska, "Doslo je do greske prilikom izbora prvog tima kod domacina!");
+               // MessageBox.Show("Doslo je do greske prilikom izbora prvog tima kod domacina!");
+               // forma.Close();
                 return;
             }
 
@@ -72,14 +87,17 @@ namespace MongoDriverTest
             while (brojKoraka > 0)
             {
                 gostiStartnih11 = izaberiIgrace(false);
-                if (!gostiStartnih11.Contains("-1"))
+                if (gostiStartnih11 != null)
                     break;
-
+                brojKoraka--;
             }
+            // ---- Ukoliko postoji greska prilikom izbora tima ----
             if (brojKoraka == 0)
             {
-                MessageBox.Show("Doslo je do greske prilikom izbora prvog tima kod domacina!");
-                forma.Close();
+                delUpdateFormInformations simulacijaGreska = new delUpdateFormInformations(forma.SimulacijaGreska);
+                forma.BeginInvoke(simulacijaGreska, "Doslo je do greske prilikom izbora prvog tima kod gostiu!");
+               // MessageBox.Show("Doslo je do greske prilikom izbora prvog tima kod domacina!");
+               // forma.Close();
                 return;
             }
              
@@ -206,7 +224,9 @@ namespace MongoDriverTest
                                     forma.RezultatDomacin.BeginInvoke(updateGol, domacinGolovi.ToString());
                                     Thread.Sleep(500);
                                     forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' DOMACIN: GOOOL !!! Strelac: " + strelac);
-                                    Thread.Sleep(1000);                                   
+                                    Thread.Sleep(1000);
+                                    /*NAudio.Wave.WaveStream pcm = NAudio.Wave.WaveFormatConversionStream.CreatePcmStream(new NAudio.Wave.Mp3FileReader(goalSound));
+                                     Thread.Sleep(3000);*/
                                     gost = noviSkilovi(gost, false, 2);
                                     updateSastavForm(gost, gostiStartnih11, false);
                                   //  Thread.Sleep(500);
@@ -222,6 +242,8 @@ namespace MongoDriverTest
                                     Thread.Sleep(500);
                                     forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: GOOOL !!! Strelac: " + strelac);
                                     Thread.Sleep(1000);
+                                    /*NAudio.Wave.WaveStream pcm = NAudio.Wave.WaveFormatConversionStream.CreatePcmStream(new NAudio.Wave.Mp3FileReader(goalSound));
+                                     Thread.Sleep(3000);*/
                                     domacin = noviSkilovi(domacin, true, 2);
                                     updateSastavForm(domacin, domaciStartnih11, true);
                                     //Thread.Sleep(500);
@@ -316,7 +338,29 @@ namespace MongoDriverTest
             statistika += brojOdbranaDomaci + " - Broj sansi za gol - " + brojOdbranaGosti + Environment.NewLine;
            // MessageBox.Show(statistika, "Statistika");
             forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, statistika);
-            Thread.Sleep(500);
+            Thread.Sleep(5000);
+
+            if (domacinGolovi > gostGolovi)
+            {
+                najboljiIgrac(domacin, domaciStartnih11, true);
+            }
+            else if (domacinGolovi < gostGolovi)
+            {
+                najboljiIgrac(gost, gostiStartnih11, true);
+            }
+            else
+            {
+                Random rand = new Random();
+                int broj = rand.Next(1, 2);
+                if (broj == 1)
+                {
+                    najboljiIgrac(domacin, domaciStartnih11, true);
+                }
+                else
+                {
+                    najboljiIgrac(gost, gostiStartnih11, true);
+                }
+            }
         }
 
         // ----- PRVI KORAK ----
@@ -367,7 +411,8 @@ namespace MongoDriverTest
             double faktorSreceATEAM = 1;
             double faktorSreceDTEAM = 1;
             faktorSreceATEAM = Math.Round(rand.NextDouble() * (1.5 - 0.5) + 0.5, 1);
-            faktorSreceDTEAM = Math.Round(rand.NextDouble() * (2.0 - 0.5) + 0.5, 1);
+            //faktorSreceDTEAM = Math.Round(rand.NextDouble() * (2.0 - 0.5) + 0.5, 1);
+            faktorSreceDTEAM = Math.Round(rand.NextDouble() * (2.0 - 0.9) + 0.9, 1);
 
             //string msg = ATEAM.ToString() + "*" + faktorSreceATEAM.ToString() + " VS " + DTEAM.ToString() + "*" + faktorSreceDTEAM.ToString();
 
@@ -406,7 +451,9 @@ namespace MongoDriverTest
             double faktorSreceATEAM = 1;
             double faktorSreceDTEAM = 1;
             faktorSreceATEAM = Math.Round(rand.NextDouble() * (1.0 - 0.5) + 0.5, 1);
-            faktorSreceDTEAM = Math.Round(rand.NextDouble() * (2.0 - 0.5) + 0.5, 1);
+           // faktorSreceDTEAM = Math.Round(rand.NextDouble() * (2.0 - 0.5) + 0.5, 1);
+            faktorSreceDTEAM = Math.Round(rand.NextDouble() * (2.0 - 1.0) + 1.0, 1);
+
 
             //string msg = ATEAM.ToString() + "*" + faktorSreceATEAM.ToString() + " VS " + DTEAM.ToString() + "*" + faktorSreceDTEAM.ToString();
 
@@ -662,15 +709,25 @@ namespace MongoDriverTest
 
             string[] posOcena = new string[11];
 
-            for (int i = 0; i < 11; i++)
+            try
             {
-                posOcena[i] = startnih11[i].ToString() + ":" + igraciSkill[startnih11[i]];
+                for (int i = 0; i < 11; i++)
+                {
+                    posOcena[i] = startnih11[i].ToString() + ":" + igraciSkill[startnih11[i]];
+                }
+                return posOcena;
             }
+            catch (Exception)
+            {
+                return null;
+            }
+            
 
-            return posOcena;
+            
         }
 
 
+        // ---- Bira najboljeg igraca za konkretnu poziciju -----
         int izaberiNajboljeg(List<int> position, double[] ekipaSkilovi, List<int> sastav)
         {
             double maxSkill = 0;
@@ -707,6 +764,7 @@ namespace MongoDriverTest
             return maxPos;
         }
 
+        // ---- Update sastava i skila u formi ----
         void updateSastavForm(double[] teamSkills, string[] posAndSkill, bool domacin)
         {
             Random rand = new Random();
@@ -834,5 +892,62 @@ namespace MongoDriverTest
             return strelac;
         }
 
+
+        void najboljiIgrac(double[] ekipa, string[] indeksSkill, bool domacin)
+        {
+            int najbolji = 0;
+
+            double max = 0;
+            int indeks = -1;
+            // max = ekipa[0];
+            for (int i = 0; i < ekipa.Length; i++)
+            {
+                if (max <= ekipa[i])
+                {
+
+                    max = ekipa[i];
+                    indeks = i;
+                }
+            }
+
+            najbolji = indeks;
+
+            string[] splitedIndeksSkill = indeksSkill[najbolji].Split(':');
+            int indeksIgraca = Convert.ToInt32(splitedIndeksSkill[0]);
+
+            string idIgraca = "";
+            string[] separators = new string[] { "<&>" };
+            if (domacin)
+            {
+                //string[] splitedIdImePos = idsNamePosDomaci[indeksIgraca].Split();
+                string[] splitedIdImePos = idsNamePosDomaci[indeksIgraca].Split(separators, StringSplitOptions.None);
+                idIgraca = splitedIdImePos[0];
+            }
+            else
+            {
+                string[] splitedIdImePos = idsNamePosGosti[indeksIgraca].Split(separators, StringSplitOptions.None);
+                idIgraca = splitedIdImePos[0];
+            }
+
+            try
+            {
+                var _client = new MongoClient();
+                var _database = _client.GetDatabase("test");
+
+                var collection = _database.GetCollection<Igrac>("igraci");
+                var filter = new BsonDocument();
+
+                var query = new QueryDocument("_id", new ObjectId(idIgraca));
+                var result = collection.Find(query).FirstOrDefault();
+
+                FDodavanjeIgraca fdi = new FDodavanjeIgraca(result);
+                fdi.ShowDialog();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.ToString());
+            }
+            
+        }
     }
 }

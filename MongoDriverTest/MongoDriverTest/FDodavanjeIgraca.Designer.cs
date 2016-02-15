@@ -57,6 +57,7 @@
             this.RtbReprezentativnaKarijera = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.RtbSportksaBiografija = new System.Windows.Forms.RichTextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbSlikaIgraca)).BeginInit();
@@ -64,6 +65,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.BtnDodajIgraca);
             this.panel1.Controls.Add(this.label9);
@@ -383,6 +385,16 @@
             this.RtbSportksaBiografija.TabIndex = 14;
             this.RtbSportksaBiografija.Text = "";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(428, 437);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(191, 25);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "IGRAC UTAKMICE";
+            // 
             // FDodavanjeIgraca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -431,5 +443,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button BtnUcitajSliku;
         private System.Windows.Forms.PictureBox PbSlikaIgraca;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -377,7 +377,25 @@ namespace MongoDriverTest
                     RTBDomacinInfo.Text += Environment.NewLine;
                     RTBDomacinInfo.Text += "Rang: ";
                     RTBDomacinInfo.Text += doc.FifaRang;
-                    RTBDomacinInfo.Text += Environment.NewLine;
+                    if (doc.NajvecaPobedaPoraz != null && !String.IsNullOrWhiteSpace(doc.NajvecaPobedaPoraz))
+                    {
+                        RTBDomacinInfo.Text += Environment.NewLine;
+                        RTBDomacinInfo.Text += "Najveca pobeda i poraz: ";
+                        RTBDomacinInfo.Text += doc.NajvecaPobedaPoraz;
+                    }
+                    if (doc.OsvojeneMedalje != null && !String.IsNullOrWhiteSpace(doc.OsvojeneMedalje))
+                    {
+                        RTBDomacinInfo.Text += Environment.NewLine;
+                        RTBDomacinInfo.Text += "Osvojene medalje: ";
+                        RTBDomacinInfo.Text += doc.OsvojeneMedalje;
+                    }
+                    if (doc.SportskaBiografija != null && !String.IsNullOrWhiteSpace(doc.OsvojeneMedalje))
+                    {
+                        RTBDomacinInfo.Text += Environment.NewLine;
+                        RTBDomacinInfo.Text += Environment.NewLine;
+                        RTBDomacinInfo.Text += "Sportska biografija: ";
+                        RTBDomacinInfo.Text += doc.SportskaBiografija;
+                    }
                     return doc;
                 }
                 else

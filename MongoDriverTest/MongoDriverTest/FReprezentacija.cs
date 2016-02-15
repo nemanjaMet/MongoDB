@@ -313,7 +313,10 @@ namespace MongoDriverTest
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string [] imena = { "Marko","Zoran","Darko","Nemanja","Petar","Milos","Dusan","John","Ronaldo","Messi","Eto","Dragan","Pique","Lucas","Henderson","Gerrard","Pato","Cutinjo","Falcao","Dragojlo","Suarez","Neymar"};
+            string [] imena = { "Vladimir Stojkovic","Nemanja Vidic","Neven Subotic","Aleksandar Kolarov","Branislav Ivanovic",
+                                  "Dusan Tadic","Zoran Tosic","Dejan Stankovic","Nemanja Matic","Aleksandar Mitrovic", "Adem Ljajic",
+                                  "Simon Minjole","Mamadu Sako","Martin Skrtel","Alberto Moreno","N. Klajn","Cutinho","Adam Lalana",
+                                  "Jordan Henderson","Lucas Leiva","Daniel Starigde","Robert Firmino"};
             string[] pozicije = { "GK", "CB", "CB", "LB", "RB", "LMF", "RMF", "CMF", "DMF", "CF", "SS", "GK", "CB", "CB", "LB", "RB", "LMF", "RMF", "CMF", "DMF", "CF", "SS" };
             if(!testData)
             {

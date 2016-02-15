@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button8 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.tbNajboljiStrelac = new System.Windows.Forms.TextBox();
@@ -41,6 +40,8 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbNadimak = new System.Windows.Forms.TextBox();
             this.rtbSportskaBiografija = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,10 +51,11 @@
             this.tbIme = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tbSelektor = new System.Windows.Forms.TextBox();
             this.tbSkracenica = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LvIgraci = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -86,7 +88,6 @@
             // groupBox1
             // 
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.tbNajboljiStrelac);
@@ -100,6 +101,7 @@
             this.groupBox1.Controls.Add(this.tbIme);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.tbSelektor);
             this.groupBox1.Controls.Add(this.tbSkracenica);
             this.groupBox1.Controls.Add(this.label4);
@@ -111,16 +113,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Napravi reprezentaciju";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(271, 640);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(208, 29);
-            this.button8.TabIndex = 24;
-            this.button8.Text = "Dodaj himnu";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label7
             // 
@@ -166,7 +158,9 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7,
-            this.columnHeader8});
+            this.columnHeader8,
+            this.columnHeader10,
+            this.columnHeader11});
             this.LVSastav.FullRowSelect = true;
             this.LVSastav.Location = new System.Drawing.Point(11, 19);
             this.LVSastav.MaximumSize = new System.Drawing.Size(451, 330);
@@ -189,18 +183,27 @@
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "Datum rodjenja";
-            this.columnHeader6.Width = 114;
+            this.columnHeader6.Text = "Mesto rodjenja";
+            this.columnHeader6.Width = 0;
             // 
             // columnHeader7
             // 
-            this.columnHeader7.Text = "Pozicija";
+            this.columnHeader7.Text = "Datum rodjenja";
             this.columnHeader7.Width = 86;
             // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "Trenutni klub";
             this.columnHeader8.Width = 106;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Visina";
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Pozicija";
+            this.columnHeader11.Width = 101;
             // 
             // tbNadimak
             // 
@@ -278,6 +281,17 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Skracenica";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(255, 640);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(221, 29);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Kapiten";
+            this.toolTip1.SetToolTip(this.button1, "Selektovati iz sastava igraca koji ce biti kapite.");
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tbSelektor
             // 
             this.tbSelektor.Location = new System.Drawing.Point(20, 195);
@@ -303,16 +317,15 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Selektor";
             // 
-            // button1
+            // button8
             // 
-            this.button1.Location = new System.Drawing.Point(526, 417);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(221, 29);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Kapiten";
-            this.toolTip1.SetToolTip(this.button1, "Selektovati iz sastava igraca koji ce biti kapite.");
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button8.Location = new System.Drawing.Point(520, 640);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(227, 29);
+            this.button8.TabIndex = 24;
+            this.button8.Text = "Dodaj himnu";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // groupBox2
             // 
@@ -381,9 +394,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(526, 382);
+            this.button4.Location = new System.Drawing.Point(520, 362);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(221, 29);
+            this.button4.Size = new System.Drawing.Size(227, 29);
             this.button4.TabIndex = 19;
             this.button4.Text = "Dodaj u sastav";
             this.button4.UseVisualStyleBackColor = true;
@@ -391,9 +404,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(753, 382);
+            this.button5.Location = new System.Drawing.Point(766, 362);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(221, 29);
+            this.button5.Size = new System.Drawing.Size(233, 29);
             this.button5.TabIndex = 21;
             this.button5.Text = "Izbaci iz sastava";
             this.button5.UseVisualStyleBackColor = true;
@@ -401,7 +414,7 @@
             // 
             // rtbOsvojeneMedalje
             // 
-            this.rtbOsvojeneMedalje.Location = new System.Drawing.Point(520, 468);
+            this.rtbOsvojeneMedalje.Location = new System.Drawing.Point(520, 437);
             this.rtbOsvojeneMedalje.Name = "rtbOsvojeneMedalje";
             this.rtbOsvojeneMedalje.Size = new System.Drawing.Size(227, 96);
             this.rtbOsvojeneMedalje.TabIndex = 22;
@@ -410,7 +423,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(517, 452);
+            this.label8.Location = new System.Drawing.Point(517, 421);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 13);
             this.label8.TabIndex = 23;
@@ -419,7 +432,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(517, 570);
+            this.label9.Location = new System.Drawing.Point(517, 539);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(120, 13);
             this.label9.TabIndex = 24;
@@ -427,14 +440,14 @@
             // 
             // tbIgracSaNajviseNastupa
             // 
-            this.tbIgracSaNajviseNastupa.Location = new System.Drawing.Point(766, 587);
+            this.tbIgracSaNajviseNastupa.Location = new System.Drawing.Point(520, 597);
             this.tbIgracSaNajviseNastupa.Name = "tbIgracSaNajviseNastupa";
             this.tbIgracSaNajviseNastupa.Size = new System.Drawing.Size(117, 20);
             this.tbIgracSaNajviseNastupa.TabIndex = 27;
             // 
             // tbNajvecaPobedaPoraz
             // 
-            this.tbNajvecaPobedaPoraz.Location = new System.Drawing.Point(520, 587);
+            this.tbNajvecaPobedaPoraz.Location = new System.Drawing.Point(520, 555);
             this.tbNajvecaPobedaPoraz.MaxLength = 3;
             this.tbNajvecaPobedaPoraz.Name = "tbNajvecaPobedaPoraz";
             this.tbNajvecaPobedaPoraz.Size = new System.Drawing.Size(117, 20);
@@ -443,7 +456,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(763, 570);
+            this.label10.Location = new System.Drawing.Point(517, 578);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(122, 13);
             this.label10.TabIndex = 26;
@@ -451,21 +464,21 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(653, 624);
+            this.button2.Location = new System.Drawing.Point(520, 395);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(138, 23);
+            this.button2.Size = new System.Drawing.Size(227, 23);
             this.button2.TabIndex = 28;
-            this.button2.Text = "Add";
+            this.button2.Text = "Add test igraci";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(833, 624);
+            this.button6.Location = new System.Drawing.Point(766, 395);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.Size = new System.Drawing.Size(233, 23);
             this.button6.TabIndex = 29;
-            this.button6.Text = "Delete";
+            this.button6.Text = "Wipe Collection";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -475,9 +488,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(754, 417);
+            this.button7.Location = new System.Drawing.Point(766, 640);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(220, 29);
+            this.button7.Size = new System.Drawing.Size(233, 29);
             this.button7.TabIndex = 30;
             this.button7.Text = "Dodaj zastavu";
             this.button7.UseVisualStyleBackColor = true;
@@ -485,9 +498,9 @@
             // 
             // PBslikaReprezentacije
             // 
-            this.PBslikaReprezentacije.Location = new System.Drawing.Point(766, 468);
+            this.PBslikaReprezentacije.Location = new System.Drawing.Point(766, 437);
             this.PBslikaReprezentacije.Name = "PBslikaReprezentacije";
-            this.PBslikaReprezentacije.Size = new System.Drawing.Size(208, 96);
+            this.PBslikaReprezentacije.Size = new System.Drawing.Size(233, 186);
             this.PBslikaReprezentacije.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PBslikaReprezentacije.TabIndex = 31;
             this.PBslikaReprezentacije.TabStop = false;
@@ -497,6 +510,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 690);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.PBslikaReprezentacije);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -509,7 +523,6 @@
             this.Controls.Add(this.rtbOsvojeneMedalje);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.groupBox1);
             this.Name = "FReprezentacija";
@@ -575,6 +588,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.ColumnHeader columnHeader17;
         private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
 
 
     }

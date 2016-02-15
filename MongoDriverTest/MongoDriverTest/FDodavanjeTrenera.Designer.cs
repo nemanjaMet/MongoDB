@@ -111,6 +111,7 @@
             this.TbTrenutniKlub.Name = "TbTrenutniKlub";
             this.TbTrenutniKlub.Size = new System.Drawing.Size(192, 22);
             this.TbTrenutniKlub.TabIndex = 7;
+            this.TbTrenutniKlub.Leave += new System.EventHandler(this.TbTrenutniKlub_Leave);
             // 
             // label5
             // 

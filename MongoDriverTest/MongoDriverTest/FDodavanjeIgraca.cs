@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 using MongoDB.Bson.IO;
 using MongoDB.Driver.GridFS;
 using System.IO;
-using System.Drawing;
+
 
 namespace MongoDriverTest
 {
@@ -131,6 +131,7 @@ namespace MongoDriverTest
                 MessageBox.Show("Ubacite poziciju/je na kojoj igrac igra!");
                 return;
             }
+            
 
             // ---- Izvlacimo pozicije igraca ----
             string pozicije = "";
@@ -150,6 +151,7 @@ namespace MongoDriverTest
             noviIgrac.TrenutniKlub = StringCleaner.checkString(TbTrenutniKlub.Text);
             noviIgrac.Pozicija = StringCleaner.checkString(pozicije);
             // ---- Ostali podaci ----
+            noviIgrac.PripadaReprezentaciji = false;
             noviIgrac.SportskaBiografija = StringCleaner.checkString(RtbSportksaBiografija.Text);
             noviIgrac.ReprezentativnaKarijera = StringCleaner.checkString(RtbReprezentativnaKarijera.Text);
             noviIgrac.Statistika = StringCleaner.checkString(RtbStatistika.Text);
@@ -178,6 +180,8 @@ namespace MongoDriverTest
                     AuxLib.deleteFromGridFS(noviIgrac._id + "igrac");
                     AuxLib.AddImageToGridFS(slika, noviIgrac._id + "igrac", format);
                 }
+                //update status igraca
+                
                 MessageBox.Show("Uspesno dodat novi igrac!");
                 
                 // ---- Zatvaranje forme ----

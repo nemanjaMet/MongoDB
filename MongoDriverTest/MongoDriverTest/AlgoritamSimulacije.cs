@@ -403,7 +403,7 @@ namespace MongoDriverTest
         public double[] noviSkilovi(double[] team, bool domacin, int podeliSa)
         {
             Random rand = new Random();
-            string noveOcene = "";
+            //string noveOcene = "";
             // ---- Generisi random brojeve za oba tima naizmenicno ----
             for (int i = 0; i < team.Length; i++)
             {
@@ -543,7 +543,7 @@ namespace MongoDriverTest
 
             int pos = 0;
             string[] separators = new string[] { "<&>" };
-            foreach (string namePos in idsNamePosDomaci)
+            foreach (string namePos in ekipaIdsNamePos)
             {             
                 string[] podela = namePos.Split(separators, StringSplitOptions.None);
 

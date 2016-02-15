@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MongoDB.Driver.GridFS;
+using MongoDB.DomainModel;
+using MongoDriverTest.DomainModel;
 
 namespace MongoDriverTest
 {
@@ -96,13 +98,33 @@ namespace MongoDriverTest
                     var _client = new MongoClient();
                     var _database = _client.GetDatabase("test");
                     
-                    var collection = _database.GetCollection<BsonDocument>("reprezentacije");
+                    var collection = _database.GetCollection<Reprezentacija>("reprezentacije");
+                    var treneriCollection = _database.GetCollection<Trener>("treneri");
+
+                    //---filter za reperzentaciju ----
                     var filter = new BsonDocument()
                     {
                         {"Ime", LvReprezentacije.SelectedItems[0].Text}
                     };
+                    //---Reprezentacija za brisanje ---
+                    var zaBrisanje = collection.Find(filter).FirstOrDefault();
+                    //update trenera (pointer na reprezentaciju treba da se anulira)
+                    var filterZaTrenera = new BsonDocument()
+                    {
+                        {"TrenutniKlub",zaBrisanje.Ime}
+                    };
+                    
+                    var filterz = Builders<Trener>.Filter.Eq("TrenutniKlub",zaBrisanje.Ime);
+                    var update = Builders<Trener>.Update
+                    .Set("TrenutniKlub", "");
+                    treneriCollection.UpdateOne(filterz, update);
+                    //-------------------------------------------
+                    //update statusa igraca ( igraci vise ne pripadaju reprezentaciji
+                    //posto se brise
+                    
+                    AuxLib.UpdateIgracStatus(zaBrisanje.SastavIDs.Split(','), false);
                     collection.DeleteOne(filter);
-
+                    //---------------------------------------------
                     string imeFajla = LvReprezentacije.SelectedItems[0].Text;
                     // Brisanje zastave
                     AuxLib.deleteFromGridFS(imeFajla+"zastava");
@@ -282,7 +304,7 @@ namespace MongoDriverTest
         {
             var _client = new MongoClient();
             var _database = _client.GetDatabase("test");
-            AuxLib.UpdateIgraciListView(this.LvIgraci);
+            AuxLib.UpdateIgraciListView(this.LvIgraci,new BsonDocument());
             AuxLib.UpdateReprezentacijeListView(this.LvReprezentacije);
             AuxLib.UpdateStadionListView(this.LVStadioni);
             AuxLib.UpdateTakmicenjeListView(this.LvTakmicanja);

@@ -103,7 +103,8 @@ namespace MongoDriverTest
                 var _client = new MongoClient();
                 var _database = _client.GetDatabase("test");
 
-                var collection = _database.GetCollection<BsonDocument>("stadioni");
+                var collection = _database.GetCollection<Stadion>("stadioni");
+
                 var collection2 = _database.GetCollection<Reprezentacija>("reprezentacije");
                 var filter2 = new BsonDocument()
                 {
@@ -123,7 +124,7 @@ namespace MongoDriverTest
 
 
                 //test if  exists
-                var test = collection.Find(filterForUniqueCheck).Count();
+                var test = collection.Find(filter).Count();
                 if (test == 0)
                 {
                     if (slikaStadiona != null)
@@ -135,13 +136,22 @@ namespace MongoDriverTest
                         MessageBox.Show("Slika nije ubacena.");
                     }
 
-                    collection.InsertOne(document);
+                    collection.InsertOne(forSave);
                     MessageBox.Show("Uspesno dodat novi stadion!");
                 }
                 else
                 {
                     //TO DO : Napraviti u AuxLib remove image i remove song za brisanje i ovde implementirati brisanje te slike i dodavanje nove. ( kao update )
-                    collection.ReplaceOne(filter, document);
+                    AuxLib.deleteFromGridFS(this.TbIme.Text + "stadion");
+                    if (slikaStadiona != null)
+                    {
+                        AuxLib.AddImageToGridFS(slikaStadiona, this.TbIme.Text + "stadion", format);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Slika nije ubacena.");
+                    }
+                    collection.ReplaceOne(filter, forSave);
                     MessageBox.Show("Uspesno azuriran stadion!");
                 }
             }

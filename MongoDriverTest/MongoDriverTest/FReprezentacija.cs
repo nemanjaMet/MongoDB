@@ -18,52 +18,72 @@ namespace MongoDriverTest
 {
     public partial class FReprezentacija : Form
     {
-        private Image slikaReprezentacije;
-        private string format;
-        private string imeSlike;
+        //private Image slikaReprezentacije;
+        private FileStream himnaStream;
+        private string formatHimna;
+        private string formatSlika;
+       // private string imeSlike;
         
         private Igrac elKapetano;
-        private bool testData;
+        //private bool testData;
         public FReprezentacija()
         {
             InitializeComponent();
             elKapetano = null;
-            testData = false;
+            //testData = false;
         }
 
-       
+        private string CheckTeam()
+        {
+            int nGoalKeeper = 0;
+            int nDefansive = 0;
+            int nMidField = 0;
+            int nOffansive = 0;
+            int sum = 0;
+            string [] Defansive  = {"SW","LB","CB","RB","LWB","RWB"};
+            string [] MidField = {"DMF","CMF","LMF","RMF","AMF"};
+            string [] Offansive = {"LWS","RWS","SS","CF"};
+            foreach(ListViewItem igrac in this.LVSastav.Items)
+            {
+                //provera za svakog igraca gde igra.
+                if (igrac.SubItems[6].Text == "GK")
+                    nGoalKeeper++;
+                else if (Defansive.Contains(igrac.SubItems[6].Text))
+                    nDefansive++;
+                else if (MidField.Contains(igrac.SubItems[6].Text))
+                    nMidField++;
+                else if (Offansive.Contains(igrac.SubItems[6].Text))
+                    nOffansive++;
+                sum++;
+            }
+            if(sum >= 11)
+            {
+                if (nGoalKeeper == 0)
+                    return "Fali golman";
+                if (nDefansive <= 3)
+                    return "Fale " + (4 - nDefansive).ToString() + " u odbrani";
+                if (nMidField <= 2)
+                    return "Fale " + (3 - nMidField).ToString() + " na sredini";
+                if (nOffansive == 0)
+                    return "Nemate napadaca";
 
-        //update liste igraca prototip
-        //private async void UpdateListView()
-        //{
-        //    var _client = new MongoClient();
-        //    var _database = _client.GetDatabase("test");
-        //    // mora Nemca da mi kaze gde ih smesta koja kolekcija
-        //    var collection = _database.GetCollection<Igrac>("igraci");
-        //    var filter = new BsonDocument();
+                return "Ok";
+            }
+            else
+            {
+                return "Nedovoljno igraca";
+            }
+        }
 
-        //    var result = await collection.Find(filter).ToListAsync<Igrac>();
-            
-        //    foreach (Igrac doc in result)
-        //    {
-        //        //var jsonWriterSettings = new JsonWriterSettings { OutputMode = JsonOutputMode.Strict };
-                
-        //        //var json = doc.ToJson(jsonWriterSettings);
-        //        //Igrac r = Newtonsoft.Json.JsonConvert.DeserializeObject<Igrac>(json);
 
-        //        ListViewItem lv1 = new ListViewItem(doc._id.ToString());
-        //        lv1.SubItems.Add(doc.PunoIme);
-        //        lv1.SubItems.Add(doc.DatumRodjenja.ToString());
-        //        lv1.SubItems.Add(doc.Pozicija);
-        //        lv1.SubItems.Add(doc.TrenutniKlub);
-
-        //        LvIgraci.Items.Add(lv1);
-        //    }
-        //}
         private void FReprezentacija_Load(object sender, EventArgs e)
         {
 
-            AuxLib.UpdateIgraciListView(this.LvIgraci);
+            var filterForListView = new BsonDocument() 
+                {
+                    {"PripadaReprezentaciji",false}
+                };
+            AuxLib.UpdateIgraciListView(this.LvIgraci, filterForListView);
                 
         }
 
@@ -184,17 +204,17 @@ namespace MongoDriverTest
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (this.tbIme.Text == "")
+            if (String.IsNullOrWhiteSpace(this.tbIme.Text))
             {
                 MessageBox.Show("Ime reprezentacije je obavezno!");
                 return;
             }
-            if (this.tbSkracenica.Text == "")
+            if (String.IsNullOrWhiteSpace(this.tbSkracenica.Text))
             {
                 MessageBox.Show("Skracenica je obavezna!(3 slova)");
                 return;
             }
-            if (this.tbSelektor.Text == "")
+            if (String.IsNullOrWhiteSpace(this.tbSelektor.Text))
             {
                 MessageBox.Show("Selektor je obavezan!");
                 return;
@@ -218,6 +238,14 @@ namespace MongoDriverTest
                     return;
                 }                    
             }
+            string temp = this.CheckTeam();
+            //provera pozicija tima
+            if (temp != "Ok")
+            {
+                MessageBox.Show(temp);
+                return;
+            };
+
             try
             {
                 //database access
@@ -273,6 +301,9 @@ namespace MongoDriverTest
                 if (test == null)
                 {
                     collection.InsertOne(forSave);
+                    AuxLib.UpdateIgracStatus(forSave.SastavIDs.Split(','), true);
+                    
+                    
                     MessageBox.Show("Reprezentacija :" + forSave.Ime + " uspesno dodata.");
                 }
                 else
@@ -289,10 +320,12 @@ namespace MongoDriverTest
                     collection.ReplaceOne(filter, forSave);
                     MessageBox.Show("Reprezentacija :" + forSave.Ime + " uspesno azurirana.");
                 }
-                if(slikaReprezentacije != null)
+
+                //ucitavanje slike iz strima u GridFS
+                if(this.PBslikaReprezentacije.Image != null)
                 {
-                    AuxLib.deleteFromGridFS(imeSlike);
-                    if (!AuxLib.AddImageToGridFS(slikaReprezentacije, imeSlike, format))
+                    AuxLib.deleteFromGridFS(forSave.Ime+"zastava");
+                    if (!AuxLib.AddImageToGridFS(this.PBslikaReprezentacije.Image, forSave.Ime + "zastava", formatSlika))
                     {
                         MessageBox.Show("Slika nije ucitana uspesno.");
                     };
@@ -301,8 +334,27 @@ namespace MongoDriverTest
                 {
                     MessageBox.Show("Slika nije selektovana zato nije ubacena.");
                 }
+
+                //ucitavanje himne iz strima u GridFS
+                if(himnaStream != null)
+                {
+                    if (AuxLib.AddSoundToGridFS(himnaStream, this.tbIme.Text + "himna", formatHimna))
+                    {
+                        MessageBox.Show("Uspesno ste dodali mp3 sadrzaja kao himnu reprezentacije.");
+                    }
+                }
+                else 
+                {
+                    MessageBox.Show("Himna nije ubacena.");
+                }
                 //reset kapetana na null
                 elKapetano = null;
+                var filterForListView = new BsonDocument() 
+                {
+                    {"PripadaReprezentaciji",false}
+                };
+                AuxLib.UpdateIgraciListView(this.LvIgraci, filterForListView);
+                this.LVSastav.Items.Clear();
             }
             catch(Exception ex)
             {
@@ -315,8 +367,8 @@ namespace MongoDriverTest
         {
             string [] imena = { "Marko","Zoran","Darko","Nemanja","Petar","Milos","Dusan","John","Ronaldo","Messi","Eto","Dragan","Pique","Lucas","Henderson","Gerrard","Pato","Cutinjo","Falcao","Dragojlo","Suarez","Neymar"};
             string[] pozicije = { "GK", "CB", "CB", "LB", "RB", "LMF", "RMF", "CMF", "DMF", "CF", "SS", "GK", "CB", "CB", "LB", "RB", "LMF", "RMF", "CMF", "DMF", "CF", "SS" };
-            if(!testData)
-            {
+            //if(!testData)
+           // {
                 var _client = new MongoClient();
                 var _database = _client.GetDatabase("test");
                 var collection = _database.GetCollection<Igrac>("igraci");
@@ -331,15 +383,20 @@ namespace MongoDriverTest
                     document.PunoIme = imena[i];
                     document.Pozicija = pozicije[i];
                     document.DatumRodjenja = DateTime.Now.ToString();
-                    
+                    document.PripadaReprezentaciji = false;
                     collection.InsertOne(document);
                 }
                 
                 //collection.UpdateOne(filter,document);
-                testData = true;
-                AuxLib.UpdateIgraciListView(this.LvIgraci);
+                //testData = true;
+
+                var filterForListView = new BsonDocument() 
+                {
+                    {"PripadaReprezentaciji",false}
+                };
+                AuxLib.UpdateIgraciListView(this.LvIgraci, filterForListView);
                 MessageBox.Show("Done" + "Count:" + collection.Count(filter).ToString());
-            }
+            //}
             
         }
 
@@ -355,22 +412,20 @@ namespace MongoDriverTest
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if(testData)
-            {
+            //if(testData)
+           // {
                 var _client = new MongoClient();
                 var _database = _client.GetDatabase("test");
 
-                var collection = _database.GetCollection<BsonDocument>("igraci");
-                var filter = new BsonDocument()
+                //var collection = _database.GetCollection<BsonDocument>("igraci");
+                _database.DropCollection("igraci");
+                var filterForListView = new BsonDocument() 
                 {
-                    {"Pozicija","Sve"}
+                    {"PripadaReprezentaciji",false}
                 };
-                collection.DeleteMany(filter);
-                testData = false;
-                this.LvIgraci.Items.Clear();
-                AuxLib.UpdateIgraciListView(this.LvIgraci);
+                AuxLib.UpdateIgraciListView(this.LvIgraci, filterForListView);
                 MessageBox.Show("Obrisano.");
-            }
+           // }
             
         }
 
@@ -381,22 +436,29 @@ namespace MongoDriverTest
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if(this.tbIme.Text == "")
-            {
-                MessageBox.Show("Unesite prvo ime reprezentacije.");
-                return;
-            }
+            //if(this.tbIme.Text == "")
+            //{
+            //    MessageBox.Show("Unesite prvo ime reprezentacije.");
+            //    return;
+            //}
             FileStream fs;
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 var forSpliting = ofd.SafeFileName.Split('.');
-                imeSlike = this.tbIme.Text + "zastava";//forSpliting[0];
-                format = forSpliting[1];
+                //imeSlike = this.tbIme.Text + "zastava";//forSpliting[0];
+                formatSlika = forSpliting[1];
 
-                fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
-                slikaReprezentacije = Image.FromStream(fs);
-                PBslikaReprezentacije.Image = Image.FromStream(fs);
+                if(formatSlika == "png" || formatSlika =="jpg" || formatSlika == "jpeg" || formatSlika == "bmp")
+                {
+                    fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
+                    //slikaReprezentacije = Image.FromStream(fs);
+                    PBslikaReprezentacije.Image = Image.FromStream(fs);
+                }
+                else
+                {
+                    MessageBox.Show("Podrzani formati slika su : png,jpg,jpeg i bmp.");
+                }
 
                 /*int duzina = Convert.ToInt32(fs.Length);
                 byte[] bajtovi = new byte[duzina];
@@ -407,33 +469,30 @@ namespace MongoDriverTest
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if(this.tbIme.Text == "")
-            {
-                MessageBox.Show("Unesite ime reprezentacije za koju ucitavate himnu.");
-                return;
-            }
+            //if(this.tbIme.Text == "")
+            //{
+            //    MessageBox.Show("Unesite ime reprezentacije za koju ucitavate himnu.");
+            //    return;
+            //}
             try
             {
-                FileStream fs;
+                //FileStream fs;
                 OpenFileDialog ofd = new OpenFileDialog();
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var forSpliting = ofd.SafeFileName.Split('.');
-                    string imePesme = forSpliting[0];
-                    string format = forSpliting[1];
+                    //string imePesme = forSpliting[0];
+                    formatHimna = forSpliting[1];
                     //if (format != "mp3")
                     //{
                     //    MessageBox.Show("Fajl mora biti u mp3 formatu.");
                     //    return;
                     //}
-                    if(format == "mp3" || format == "MP3")
+                    if (formatHimna == "mp3" || formatHimna == "MP3")
                     {
-                        fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
-
-                        if (AuxLib.AddSoundToGridFS(fs, this.tbIme.Text + "himna", format))
-                        {
-                            MessageBox.Show("Uspesno ste dodali mp3 sadrzaja kao himnu reprezentacije.");
-                        }
+                        himnaStream = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
+                        MessageBox.Show("Himna uspesno ucitana.");
+                        
                     }
                     else 
                     {

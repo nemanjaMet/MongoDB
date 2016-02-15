@@ -16,13 +16,68 @@ namespace MongoDriverTest
 {
     public class AuxLib
     {
-        public static async void UpdateIgraciListView(ListView LVForAdding)
+        //setuje igracu sa datim IDom property pripadaReprezentaciji
+        public static  void UpdateIgracStatus(string [] IDs,bool value)
         {
+            
+            foreach(string id in IDs)
+            {
+                ObjectId Oid = new ObjectId(id);
+                var _client = new MongoClient();
+                var _database = _client.GetDatabase("test");
+                var collection = _database.GetCollection<BsonDocument>("igraci");
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", Oid);
+                var update = Builders<BsonDocument>.Update
+                    .Set("PripadaReprezentaciji", value)
+                    .CurrentDate("lastModified");
+
+                var result =  collection.UpdateOne(filter, update);
+            }
+            
+        }
+        //public static async void UpdateFREEIgraciListView(ListView LVForAdding)
+        //{
+        //    LVForAdding.Items.Clear();
+        //    var _client = new MongoClient();
+        //    var _database = _client.GetDatabase("test");
+        //    // mora Nemca da mi kaze gde ih smesta koja kolekcija
+        //    var collection = _database.GetCollection<Igrac>("igraci");
+        //    var filter = new BsonDocument() 
+        //    {
+        //        {"PripadaReprezentaciji",false}
+        //    };
+
+        //    var result = await collection.Find(filter).ToListAsync<Igrac>();
+
+        //    foreach (Igrac doc in result)
+        //    {
+        //        //var jsonWriterSettings = new JsonWriterSettings { OutputMode = JsonOutputMode.Strict };
+
+        //        //var json = doc.ToJson(jsonWriterSettings);
+        //        //Igrac r = Newtonsoft.Json.JsonConvert.DeserializeObject<Igrac>(json);
+
+        //        ListViewItem lv1 = new ListViewItem(doc._id.ToString());
+        //        lv1.SubItems.Add(doc.PunoIme);
+        //        lv1.SubItems.Add(doc.MestoRodjenja);
+        //        lv1.SubItems.Add(doc.DatumRodjenja.ToString());
+        //        lv1.SubItems.Add(doc.TrenutniKlub);
+        //        lv1.SubItems.Add(doc.Visina);
+        //        lv1.SubItems.Add(doc.Pozicija);
+
+        //        // lv1.SubItems.Add(doc.Visina);
+        //        // lv1.SubItems.Add(doc.Pozicija);
+        //        LVForAdding.Items.Add(lv1);
+        //    }
+        //}
+        public static async void UpdateIgraciListView(ListView LVForAdding,BsonDocument filter)
+        {
+            LVForAdding.Items.Clear();
             var _client = new MongoClient();
             var _database = _client.GetDatabase("test");
             // mora Nemca da mi kaze gde ih smesta koja kolekcija
             var collection = _database.GetCollection<Igrac>("igraci");
-            var filter = new BsonDocument();
+            //var filter = new BsonDocument();
+            
 
             var result = await collection.Find(filter).ToListAsync<Igrac>();
 
@@ -389,7 +444,7 @@ namespace MongoDriverTest
             
         }
         // ------- Funkcija kojom uzimamo podatke o stadionu i prikazujemo informacije u RichTextBoxu --------
-        internal static  Stadion PrikaziStadionRTB(RichTextBox RTBStadionInfo, string p)
+        internal static  Stadion PrikaziStadionRTB(RichTextBox RTBStadionInfo, Reprezentacija domacin)
         {
             var _client = new MongoClient();
             var _database = _client.GetDatabase("test");
@@ -397,7 +452,7 @@ namespace MongoDriverTest
             var collection = _database.GetCollection<Stadion>("stadioni");
             var filter = new BsonDocument() 
             {
-                {"Ime",p}
+                {"ReprezentacijaID",domacin._id.ToString()}
             };
             var doc = collection.Find<Stadion>(filter).FirstOrDefault();
             //var result = await collection.Find(filter).ToListAsync<Stadion>();
@@ -437,6 +492,7 @@ namespace MongoDriverTest
             //}
         }
 
+        //delete from GridFS (old api)
         public static void deleteFromGridFS(string imeFajla)
         {
             var client = new MongoClient("mongodb://localhost");
@@ -446,6 +502,7 @@ namespace MongoDriverTest
             gridFs.Delete(imeFajla);
         }
 
+        // proverava da li je u ime u tekstboxu validna reprezentacija u bazi i signalizira bojom
         public static async void Check(string ime,TextBox TBox)
         {
             var _client = new MongoClient();
@@ -468,5 +525,7 @@ namespace MongoDriverTest
                 TBox.BackColor = Color.Green;
             }
         }
+        
+        
     }
 }

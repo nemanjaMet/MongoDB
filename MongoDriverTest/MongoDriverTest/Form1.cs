@@ -477,5 +477,10 @@ namespace MongoDriverTest
             test.ShowDialog();
 
         }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+           // AuxLib.UpdateIgracStatus("56c084c53975de10787abb32",false);
+        }
     }
 }

@@ -69,6 +69,11 @@ namespace MongoDriverTest.DomainModel
                 MessageBox.Show("Unesi trenutni klub(reprezentaciju) koju trenira trener!");
                 return;
             }
+            else if (this.TbTrenutniKlub.BackColor == Color.Red)
+            {
+                MessageBox.Show("Napisana reprezentacija ne postoji u bazi.");
+                return;
+            }
             Trener forSave = new Trener();
             forSave.PunoIme = StringCleaner.checkString(TbPunoIme.Text);
             forSave.MestoRodjenja = StringCleaner.checkString(TbMestoRodjenja.Text);
@@ -80,21 +85,21 @@ namespace MongoDriverTest.DomainModel
             var _client = new MongoClient();
             var _database = _client.GetDatabase("test");
 
-            var collection = _database.GetCollection<BsonDocument>("treneri");
+            var collection = _database.GetCollection<Trener>("treneri");
+            
             var filter = new BsonDocument() 
             {
                 {"PunoIme",TbPunoIme.Text}
             };
 
-            var filterForUniqueCheck = Builders<BsonDocument>.Filter.Eq("PunoIme", this.TbPunoIme.Text);
 
-            var document = forSave.ToBsonDocument();
+            //var document = forSave.ToBsonDocument();
             //test if  exists
-            var test = collection.Find(filterForUniqueCheck).Count();
+            var test = collection.Find(filter).Count();
 
             if(test == 0)
             {
-                collection.InsertOne(document);
+                collection.InsertOne(forSave);
                 if (slikaTrenera != null)
                 {
                     AuxLib.AddImageToGridFS(slikaTrenera, forSave.PunoIme+"trener", format);
@@ -105,11 +110,16 @@ namespace MongoDriverTest.DomainModel
             else
             {
                 //TO DO : URADITI UPDATE SLIKE (AuxLib treba da ima remove image i remove mp3 i da se izbaci slika i ubaci nova);
-                collection.ReplaceOne(filter, document);
+                collection.ReplaceOne(filter, forSave);
                 MessageBox.Show("Uspesno azuriran trener!");
             }
             
             
+        }
+
+        private void TbTrenutniKlub_Leave(object sender, EventArgs e)
+        {
+            AuxLib.Check(this.TbTrenutniKlub.Text, this.TbTrenutniKlub);
         }
     }
 }

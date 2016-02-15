@@ -107,7 +107,7 @@
             // BtnUcitajSliku
             // 
             this.BtnUcitajSliku.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnUcitajSliku.Location = new System.Drawing.Point(10, 232);
+            this.BtnUcitajSliku.Location = new System.Drawing.Point(26, 346);
             this.BtnUcitajSliku.Name = "BtnUcitajSliku";
             this.BtnUcitajSliku.Size = new System.Drawing.Size(142, 29);
             this.BtnUcitajSliku.TabIndex = 18;
@@ -117,7 +117,7 @@
             // 
             // PbSlikaIgraca
             // 
-            this.PbSlikaIgraca.Location = new System.Drawing.Point(181, 232);
+            this.PbSlikaIgraca.Location = new System.Drawing.Point(193, 261);
             this.PbSlikaIgraca.Name = "PbSlikaIgraca";
             this.PbSlikaIgraca.Size = new System.Drawing.Size(142, 114);
             this.PbSlikaIgraca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

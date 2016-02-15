@@ -27,6 +27,10 @@ namespace MongoDB.DomainModel
         [BsonIgnoreIfNull] //u implementaciji si stavio da moze da bude nullable, ako ne moze ovo brisi a tamo dodaj.
 	    public String DatumRodjenja { get; set; }
         public String MestoRodjenja { get; set; }
+
+        public bool PripadaReprezentaciji { get; set; }
+
+        public DateTime lastModified { get; set; }
         public String Visina { get; set; }
         public String Pozicija { get; set; }
         public String TrenutniKlub { get; set; }

@@ -39,7 +39,7 @@ namespace MongoDriverTest
             domacinIme = domacin;
             gostIme = gost;
             staraForma.Dispose();
-            
+            notClosed = true;
 
         }
         public FInfoZaMec(Reprezentacija domacin, Reprezentacija gost, Stadion stadion)
@@ -75,16 +75,16 @@ namespace MongoDriverTest
         {
             try
             {
-                //TO DO : UCITATI I FORMATIRATI INFORMACIJE O OBA TIMA I O STADIONU I UPISATI U RTB..
+                //vraca vraca objekte i upisuje podatke u richtextboxove
                 domacin = AuxLib.PrikaziDomacinaRTB(this.RTBDomacinInfo, domacinIme);
                 gost = AuxLib.PrikaziDomacinaRTB(this.RTBGostInfo, gostIme);
-                stadion = AuxLib.PrikaziStadionRTB(this.RTBStadionInfo, "Test");
+                stadion = AuxLib.PrikaziStadionRTB(this.RTBStadionInfo, domacin);
                 //-------------------------
-
+                
                 //ucitavanje slika iz gridFS-a
                 this.PBDomacinZastava.Image = AuxLib.LoadImageFromGridFS(this.domacinIme + "zastava");
                 this.PBGostZastava.Image = AuxLib.LoadImageFromGridFS(this.gostIme + "zastava");
-                this.PBStadionZastava.Image = AuxLib.LoadImageFromGridFS("Test" + "stadion");
+                this.PBStadionZastava.Image = AuxLib.LoadImageFromGridFS( stadion.Ime + "stadion");
                 //--------------------------
 
                 //ucitamo himnu iz baze kao byte array

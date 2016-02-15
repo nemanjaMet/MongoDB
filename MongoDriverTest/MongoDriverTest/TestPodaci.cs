@@ -449,6 +449,361 @@ namespace MongoDriverTest
 
                 // -------------------------------- //
 
+                //1
+                punoIme = "Džerom Boateng";
+                mestoRodjenja = "Nemacka, Berlin";
+                datumRodjenja = " 3.9.1988";
+                visina = "";
+                trenutniKlub = "Bajern Minhen";
+                pozicija = "LB,RB";
+                sportskaBiografija = "Rođen je u Berlinu, iz mešovitog braka Nemice i Ganijca. Njegov stric, Robert Boateng je bivši reprezentativac Gane. Džeromov polubrat Kevin Prins, nastpa za Milan. Karijeru je počeo u Herti, kroz čije je sve mlađe selekcije prošao. Izborio je mesto u prvom timu u kojem je odigrao jednu sezonu pre nego što je prešao u Hamburger. Sa ekipom Hamburgera je dva puta uzastupno uspeo da izbori plasman u polufinale Lige Evrope." +
+                    "U Mančester siti je prešao 5. juna 2010. uz obeštećenje od 10.400.000 funti. Debitovao je za Siti u prijateljskoj utakmici sa Valensijom. Tada je u igru ušao sa klube umesto Majke Ričardsa i asistirao je Garetu Bariju prilikom postizanja gola. Početak sezone je propustio zbog povrede koju je zaradio dok je nastupao za reprezentaciju u prijateljskoj utakmici sa Danskom[1]. Zbog toga je u zvaničnoj utakmici za Siti debitovao tek 25. septembra 2010. kada je u igru ušao sa klupe u pobedi nad Čelsijem od 1:0. Prvi put je bio u startnoj postavi protiv Juventusa (1:1) u utakmici Lige Evrope" +
+                    "Ne zadovoljan minutažom i time što je najčešće igrao na pozciji desnog beka, a ne štopera, odlučio je da napusti Mančester siti[3]. U Bajern Minhen je prešao 14. jula 2011. uz obeštećenje od 13.500.000 evra. U dresu novog kluba je debitovao 27. jula 2011. protiv Milana u utakmici Audi kupa, kada je u igru ušao sa klupe umesto Rafinje. Za Bajern je u prvenstvu debitovao 6. avgusta 2011. u porazu na domaćem terenu od Borusije Menhengladbah.";
+                reprezentativnaKarijera = "Boateng je igrao za sve mlađe selekcije reprezentacije. Sa reprezentacijom da 21 godine je osvojio Evropsko prvenstvo 2009. Za seniorsku reprezentaciju Nemačke je debitovao 10. oktobra 2009. protiv Rusije[4]. U drugom poluvremenu te utakmice je zaradio drugi žuti karton čime je postao prvi nemački reprezentativac koji je isključen na debiju" +
+                    "Selektor Joakim Lev je uvrstio Boatenga na spisak putnika za Svetsko prvenstvo 2010. u Južnoj Africi. Boateng je 23. juna 2010. igrao protiv svog brata Kevina Prinsa koji je nastupao za reprezentaciju Gane[6]. Nemačka je slavila sa 1:0, i to je bila prva utakmica u istoriji svetskih prvenstava u kojoj su dva brata igrala jedan protiv drugog u dresovima različitih reprezentacija[7]. Boateng je bio starter i u pobedi nad Engleskom 4:1 u osmini finala, a zatim i u pobedi nad Argentinom 4:0 u četvrtfinalu[8]. U Polufinalu je Nemačka poražena od evropskog prvaka Španije 1:0, golom Karlesa Pujola[9]. U utakmici za treće mesto savladan je Urugvaj 3:2, a Boateng je bio asistent Marselu Jansenu kod drugog gola, čime je Nemačka došla do drugog uzastopnog trećeg mesta na svetskim prvnstvima" +
+                    "Boateng je učestvovao i na Evropskom prvenstvu 2012. i bio prvi izbor selektora Leva na poziciji desnog beka.";
+                statistika = "";
+                trofeji = "Mančester siti: FA kup (1) : 2010/11. Bajern Minhen: Prvenstvo Nemačke (3) : 2012/13, 2013/14, 2014/15. Kup Nemačke (2) : 2012/13, 2013/14. Superkup Nemačke (1) : 2012. Telekom kup Nemačke (2) : 2013, 2014. Liga šampiona (1) : 2012/13. (finale 2011/12). UEFA superkup (1) : 2013. Svetsko klupsko prvenstvo (1) : 2013. Reprezentacija Nemačke: Evropsko prvenstvo do 21. godine (1) : 2009. Svetsko prvenstvo (1) : 2014. Svetsko prvenstvo : (treće mesto) 2010.";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                //2
+                punoIme = "Mats Hummels";
+                mestoRodjenja = "Bergisch Gladbach";
+                datumRodjenja = "16.12.1988";
+                visina = "1.91";
+                trenutniKlub = "Borusia Dortmund";
+                pozicija = "CB";
+                sportskaBiografija = "";
+                reprezentativnaKarijera = "Za reprezentaciju je debitovao 2010. godine, a od Eura 2012 postao je standardni prvotimac.";
+                statistika = "";
+                trofeji = "";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                //3
+                punoIme = "Toni Kros";
+                mestoRodjenja = "";
+                datumRodjenja = "4.1.1990";
+                visina = "";
+                trenutniKlub = "Real Madrid";
+                pozicija = "CMF,DMF";
+                sportskaBiografija = "Kros je napravio neverovatni početak karijere u Bajernu. Na svom debiju u Bajernu 26. septembra 2007. u pobedi od 5:0 protiv Energi Kotbusaa je u 18 odigranih minuta ima dve asistencije za dva gola Miroslava Klozea. 9. januara 2009. je otišao na pozajmicu u Bajer Leverkuzen na godinu dana, a nakon jedne i po sezone u Bajeru vratio se u Bajern nakon završetka sezone 2009/10.";
+                reprezentativnaKarijera = "";
+                statistika = "";
+                trofeji = "";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                //4
+                punoIme = "Tomas Miler";
+                mestoRodjenja = " Vajlhajm";
+                datumRodjenja = "13.9.1989.";
+                visina = "";
+                trenutniKlub = "Bajern Minhen";
+                pozicija = "CF,SS";
+                sportskaBiografija = "Miler je u Minhenski Bajern otišao 2000., sa samo 10 godina, a razvio se u Bajernovoj školi fudbala. Za rezervnu ekipu Bajerna, Miler je debitovao u martu 2008. godine, protiv SpVgg Unterhachin. U debiju je postigao pogodak, a odigrao je još dve utakmice u 2007./08. sezoni, pre nego što se povredio." +
+                    "Sledeće sezone, Bajernove rezerve su se kvalifikovale za tada novoosnovanu 3. Ligu, a Miler je postao jedan od ključnih igrača - nastupio je u 32 od 38 utakmica, a postigao je 15 pogodaka i postao peti strelac sezone. Zaigrao je i za prvi tim, u prijateljskim presezonskim utakmicama, a prvi Bundesligaški nastup imao je 15. avgusta 2008. protiv Hamburga. Imao je još tri nastupa u Bundesligi te sezone; a uz to, debitovao je i u Ligi prvaka 10. marta 2009., ušavši u 72. minuti umesto Švajnštajgera, u 7:1 pobedi protiv Sportinga. Postigao je poslednji pogodak za Bajern na toj utakmici." +
+                    "Miler je početkom sezone 2009./10. često igrao za prvu postavu Bajerna, dok je u avgustu 2009. pozvan u nemačku U-21 reprezentaciju, debitujući u 3:1 pobedi protiv Turske." +
+                    "12. avgusta 12 2009., Miler je ušao sa klupe u utakmici Bajerna protiv dortmundske Borusije i postigao dva pogotka u 5:1 pobedi. Tri dana kasnije, Miler je postigao novi pogodak u Ligi šampiona, protiv Makabija iz Haife.";
+                reprezentativnaKarijera = "";
+                statistika = "Na 92 utakmice dao je 36 golova";
+                trofeji = "Bajern Minhen: Prvenstvo Nemačke (4) : 2009/10, 2012/13, 2013/14, 2014/15. Kup Nemačke (3) : 2009/10, 2012/13, 2013/14. Superkup Nemačke (2) : 2010, 2012. Telekom kup Nemačke (2) : 2013, 2014. Liga šampiona (1) : 2012/13. (finale 2009/10, 2011/12). UEFA superkup (1) : 2013. Svetsko klupsko prvenstvo (1) : 2013. Nemačka: Svetsko prvenstvo (1) : 2014[4] Svetsko prvenstvo : treće mesto 2010[5]";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                //5
+                punoIme = "Mesut Ozil";
+                mestoRodjenja = "Gelzenkirhen";
+                datumRodjenja = " 15.10.1988";
+                visina = "1.80";
+                trenutniKlub = "Arsenal";
+                pozicija = "LMF,RMF";
+                sportskaBiografija = "Ozil je u mlađim kategorijama igrao za više timova iz Gelzenkirhena. Nakon toga je pet godina proveo u Rot vajsu iz Esena. U Šalke 04 je došao 2005. i prvo je jednu sezonu proveo igrajući u omladinskom timu ove ekipe, pre nego što je prekomandovan u prvi tim. Debitovao je za prvi tim u Liga kupu protiv Bajer Leverkuzena. Iako je pokazao da se radi o talentovanom igraču, zbog neslaganja sa upravom, 2008. godine je prešao u Verder Bremen." +
+                    "U Verder Bremen je prešao 31. januara 2008. uz obeštećenje od 4,3 miliona evra. Predvodio je Verder do trofeja u Kupu Nemačke 2009. Bio je strelac jedinog gola na utakmici finala protiv Bajer Leverkuzena, odigranoj u Berlinu. Te sezone je njegov klub stigao i do finala Kupa UEFA u kome je poražen od Šahtjora. Verder je tu sezonu završio na razočaravajućem desetom mestu u prvenstvu, dok je Ozil postigao 3 gola i bio asistent kod čak 15 golova. U narednoj sezoni, poslednjoj Ozilovoj u klubu, koju je Verder završio kao treći, Ezil je 16 puta bio asistent." +
+                    "Nakon sjajnih partija na Svetskom prvenstvu 2010. interesovanje za Ozila je pokazao Real Madrid. Verder Bremen je 17. avgusta 2010. objavio da je postigao dogovor sa Realom oko transfera Ezila. Obeštećenje je iznosilo negde oko 15 miliona evra. U dresu novog kluba je debitovao 22. avgusta u prijateljskoj utakmici sa Herkulesom (3-1). Debitovao je u španskoj ligi protiv Majorke (0-0) kada je u igru ušao u 62. minutu umesto Anhela di Marije. Prvi gol za Real Madrid je postigao protiv Deportivo la Korunje (6-1) 3. oktobra 2010, dok je prvi gol u Ligi šampiona postigao 19. oktobra 2010. protiv Milana." +
+                    "U letnjem prelaznom roku, 1. septembra 2013. godine, Ezil prelazi u Arsenal. Iznos transfera bio je 50 miliona evra, i to je ujedno bio drugi najveći transfer u Premijer ligi.";
+                reprezentativnaKarijera = "Ozil je bio član mlađih selekcija reprezentacije Nemačke. Prvi put je u septembru 2006. pozvan u reprezentaciju do 17 godina. Član reprezentacije do 21 godine je bio od 2007. Sa ovom reprezentacijom je na Evropskom prvenstvu za igrače do 21. godine 2009. osvojio prvo mesto. U finalnoj utakmici odigranoj 29. juna 2009. u kojoj je njegova reprezentacija savladala Englesku 4-0, proglašen je najboljim igračem tog meča." +
+                    "Za seniorsku reprezentaciju Nemačke je debitovao 11. februara 2009. u prijateljskoj utakmici sa Norveškom. Prvi gol za reprezentaciju je postigao u svom trećem nastupu 5. septembra 2009. u prijateljskoj utakmici sa Južnom Afrikom u Leverkuzenu. Našao se i na spisku učesnika Svetskog prvenstva 2010. Bio je starter na svih sedam utakmica, a u poslednjoj utakmici grupne faze protiv Gane postigao je jedini gol na tom meču. Zbog odličnih igara na ovom prvenstvu bio jej jedan od deset nominovanih fudbalera za zlatnu kopačku.";
+                statistika = "";
+                trofeji = "Verder Bremen: Kup (1): 2009. Kup UEFA (finalista): 2009. Nemačka: Evropsko prvenstvo do 21. godine (prvo mesto): 2009. Svetsko prvenstvo (treće mesto): 2010.";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                //6
+                punoIme = "Bastijan (Srpski zet) Švajnštajger";
+                mestoRodjenja = "Kolbermoru";
+                datumRodjenja = "1.8.1984";
+                visina = "";
+                trenutniKlub = "Mančester junajted";
+                pozicija = "CMF,DMF";
+                sportskaBiografija = "Do 1992. igrao je za FK Oberaudorf, da bi narednih šest godina (1992 — 1998) proveo u SK 1860 Rozenhajm. Od 1998. igra za FK Bajern iz Minhena. Do polovine sezone 2009/2010 odigrao je ukupno 207 utakmica za Bajern i pritom postigao 21 gol";
+                reprezentativnaKarijera = "Prvi put je zaigrao za reprezentaciju Nemačke 6. juna 2004. u Kajzerslauternu, na utakmici protiv Mađarske. U dresu reprezentacije, gde nosi broj 7, igrao je 72 puta i pogađao 19 puta (stanje 18. novembar 2009.)";
+                statistika = "";
+                trofeji = "Drugi na Evropskom prvenstvu 2008. Treći na Svetskom prvenstvu 2006. Prvak Nemačke 2003, 2005, 2006. i 2008. Pobednik Nemačkog kupa 2003, 2005, 2006 i 2008.";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                //7
+                punoIme = "Manuel Nojer";
+                mestoRodjenja = " Gelzenkirhen";
+                datumRodjenja = "27.3.1986";
+                visina = "1.93";
+                trenutniKlub = "	Bajern Minhen";
+                pozicija = "GK";
+                sportskaBiografija = "U julu 2011. godine Nojer potpisuje petogodišnji ugovor koji će trajati do 2016. godine. Ovaj transfer bio je vredan 22 miliiona evra, što ga je automatski stavilo na drugu poziciju najskupljih golmana svih vremena. U prvoj sezoni u klubu pomogao je Bajern-u da prođe u finale Lige šampiona eliminisavši Real Madrid. Utakmica je završena penalima, gde je Nojer zaustavio udarce Kristijana Ronalda i Kake.[5] U finalu ih je dočekao Čelsi. I ova je utakmica došla do penala, gde je Nojer čak i postigao gol u trećoj seriji, ali ni to nije pomoglo, jer je Čelsi slavio sa 4-3 na Alijanc Areni, na kojoj inače i igra Bajern Minhen. Nastupajući za Bajern uspeo je da obori rekord čuvenog Olivera Kana da više od 1000 minuta ne primi gol!";
+                reprezentativnaKarijera = "Nojer je u maju 2009. godine pozvan u A reprezentaciju Nemačke.[6] Debitovao je u junu protiv Ujedinjenih Arapskih Emirata. Zbog povrede Rene Adlera i smrti Roberta Enkea, Nojer je izabran kao broj 1 za SP u Južnoj Africi. Tokom grupne faze, primio je samo jedan gol, i to protiv Srbije, a strelac je bio Milan Jovanović. Nemačka je u utakmici za 3. mesto pobedila reprezentaciju Urugvaja i osvojila bronzu." +
+                    "Nojer je bio prvi golman i na ovom prvenstvu koje se igralo u Poljskoj i Ukrajini. Nemačka je bila u grupi B i to sa : Holandijom , Danskom i Portugalijom. Pobedili su sve tri , a Nojer je primio dva gola. Savladali su Grčku u četvrtfinalu , a izgubili od Italije u polufinalu. Izabran je u postavi najboljih jedanaest ovog prvenstva.";
+                statistika = "";
+                trofeji = "Šalke: Kup Nemačke (1) : 2010/11. Liga kup Nemačke (1) : 2005. Bajern Minhen: Prvenstvo Nemačke (3) : 2012/13, 2013/14, 2014/15. Kup Nemačke (2) : 2012/13, 2013/14. Superkup Nemačke (1) : 2012. Telekom kup Nemačke (2) : 2013, 2014. Liga šampiona (1) : 2012/13. (finale 2011/12). UEFA superkup (1) : 2013. Svetsko klupsko prvenstvo (1) : 2013. Nemačka: Svetsko prvenstvo (1) : 2014. Evropsko prvenstvo do 21 godine (1) : 2009.";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                //8
+                punoIme = "Mario Gece";
+                mestoRodjenja = "Memingen";
+                datumRodjenja = "3.5.1992";
+                visina = "1.76";
+                trenutniKlub = "Bajern Minhen";
+                pozicija = "SS";
+                sportskaBiografija = "Dana 23. aprila 2013. objavljeno je da će se Gece pridružiti Bajernu iz Minhena 1. jula 2013, nakon što je ovaj tim platio klazulu od 37. miliona evra.[7][8][9] Taj transfer je u tom momentu napravio Gecea najskupljim nemačkim igračem svih vremena.[10][11] Mesut Ezil je taj rekord oborio nakon što je u septembru 2013. otišao u Arsenal za 50 miliona evra.[12] Trener Dortumnda Klop je rekao da je Gece otišao u Bajern zbog trenera Gvardiole koji je preuzeo tim tog leta.[13] Klop je priznao da je bio besan nakon što je transfer Gecea objavljen samo 36 sati pre polufinalne utakmice Lige šampiona sa Realom.[14] Klop je kasnije rekao da nije bilo nikakve šanse da zadrži Gecea jer je on bio velika želja Gvardiole." +
+                    "Dana 11. avgusta 2013. Gece je debitovao za Bajern ušavši kao zamena za Mičela Vajzera, na prijateljskom meču sa mađarskim šampionom Đerom. Postigao je dva gola na tom meču u pobedi svog tima od 4:1.[16] Svoj debi u Bundesligi je imao 24. avgusta 2013. na meču sa Nirnbergom, koji je Bajern dobio sa 2:0.[17] Dana 19. oktobra 2013. Gece je ušao kao zamena i namestio dve asistencije za pobedu svog tima od 4:1 nad Majncom" +
+                    "Dana 23. oktobra 2013, Gece je postigao svoj prvi gol u Ligi Šampiona za Bajern, u pobedi od 5:0 nad Plzenjom na Alijanc areni. Takođe je asistitrao Švajnštajgeru za jedan gol.[19] Dana 26. oktobra 2013, Gece je ušao kao zamena za Tonija Krosa u 25. minutu i postigao svoj prvi gol u Bundesligi u dresu Bajerna u pobedi od 3:2 nad Hertom.";
+                reprezentativnaKarijera = "Nakon što je prošao sve mlađe selekcije, Gece je svoj debi u seniorskoj reprezentaciji imao 17. novembra 2010. protiv Švedske. Ušao je kao zamena svom nekadašnjem saigraču Kevinu Groskrojcu u 78. minutu[21] i postao najmlađi nemački reprezentativac posle Uvea Zelera. Svoj prvi gol za reprezentaciju je postigao 10. avgusta 2011. protiv Brazila. Tada je imao 19. godina i 68. dana čime je u dan izjednačio rekord Klausa Štirmera iz 1954, kao najmlađi strelac u istoriji Nemačke.";
+                statistika = "Dao je 13 golova za reprezentaciju.";
+                trofeji = "Borusija Dortmund: Prvenstvo Nemačke (2) : 2010/11, 2011/12. Kup Nemačke (1) : 2011/12. Telekom kup Nemačke (1) : 2011. Liga šampiona : finale 2012/13. Bajern Minhen: Prvenstvo Nemačke (2) : 2013/14, 2014/15. Kup Nemačke (1) : 2013/14. Telekom kup Nemačke (2) : 2013, 2014. UEFA superkup (1) : 2013. Svetsko klupsko prvenstvo (1) : 2013. Nemačka:  Svetsko prvenstvo (1) : 2014. Svetsko prvenstvo do 17. godina (1) : 2009.";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                //9
+                punoIme = "Julian Draxle";
+                mestoRodjenja = "Gladbeck, Germany";
+                datumRodjenja = "20.9.1993";
+                visina = "1.87";
+                trenutniKlub = "VfL Wolfsburg";
+                pozicija = "LMF,RMF";
+                sportskaBiografija = "";
+                reprezentativnaKarijera = "";
+                statistika = "Na 190 utakmica dao je 34 golova.";
+                trofeji = "Schalke 04: DFB-Pokal: 2010–11 DFL-Supercup: 2011";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+
+                //10
+                punoIme = "Andre Širle";
+                mestoRodjenja = "Ludvigshafen na Rajni";
+                datumRodjenja = " 6.11.1990";
+                visina = "";
+                trenutniKlub = "Volfsburg";
+                pozicija = "LMF,RMF";
+                sportskaBiografija = "Fudbalsku karijeru je započeo u lokalnom klubu Ludvigshafen u sezoni 2005/06. Naredne sezone prelazi u Majnc takođe u juniorski tim, za koje je igrao do 2009. godine kada prelazi u seniorski tim. Dobrim igrama na početku sezone u Bundesligi, potpisuje svoj prvi profesionalni ugovor sa Majncom krajem septembra 2009. godine. 2011. prelazi u Bajer Leverkuzen gde je uspešno igrao dve sezone. 2013. godine odlazi u Englesku gde je igrao za Čelsi.[1] U zimskom prelaznom roku, februara 2015. godine vraća se u nemačku Bundesligu i sa Volfsburgom potpisuje ugovor do 2019. Transfer je procenjen na 22 miliona funti.";
+                reprezentativnaKarijera = "2008. godine je debitovao za reprezentaciju Nemačke do 19 godina, da bi nakon dobrih igara u Majncu nastupao i za nacionalni sastav do 21 godine. Za seniorsku reprezentaciju je debitovao 17. novembra 2010. godine u prijateljskom meču protiv Švedske ušavši u igru u 78. minuti zamenivši Luisa Holtbija. Prvi gol za reprezentaciju je dao u prijateljskom meču protiv Urugvaja 29. maja 2011. godine. Selektor nemačke reprezentacije Joahim Lev ga je uvrstio na spisak igrača za Evropsko prvenstvo 2012. u Poljskoj i Ukrajini. 2014. godine je učestvovao i na Svetskom prvenstvu u Brazilu kada sa reprezentacijom osvaja prvo mesto pobedivši u finalu reprezentaciju Argentine. Na Svetskom prvenstvu je odigrao pet utakmica i dao tri gola, jedan protiv Alžira, a dva u polufinalu protiv Brazila.";
+                statistika = "Postigao je 20 golova za reprezentaciju";
+                trofeji = "Nemačka: Svetsko prvenstvo prvo mesto: 2014.";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                //11
+                punoIme = "Antonio Rüdiger";
+                mestoRodjenja = "";
+                datumRodjenja = "3.3.1993";
+                visina = "1.90";
+                trenutniKlub = "Roma";
+                pozicija = "CB";
+                sportskaBiografija = "";
+                reprezentativnaKarijera = "";
+                statistika = "";
+                trofeji = "";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                //12
+                punoIme = "Kevin Großkreutz";
+                mestoRodjenja = "";
+                datumRodjenja = "196.1988";
+                visina = "1.86";
+                trenutniKlub = "VfB Stuttgart";
+                pozicija = "RB";
+                sportskaBiografija = "";
+                reprezentativnaKarijera = "";
+                statistika = "";
+                trofeji = "";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                //13
+                punoIme = "Marcel Schmelzer";
+                mestoRodjenja = "";
+                datumRodjenja = "221.1988";
+                visina = "1.80";
+                trenutniKlub = "	Borussia Dortmund";
+                pozicija = "LB";
+                sportskaBiografija = "";
+                reprezentativnaKarijera = "";
+                statistika = "Na 298 utakmica postigao 4 gola.";
+                trofeji = "";
+
+                noviIgrac = new Igrac();
+                noviIgrac.PunoIme = punoIme;
+                noviIgrac.MestoRodjenja = mestoRodjenja;
+                noviIgrac.DatumRodjenja = datumRodjenja;
+                noviIgrac.Visina = visina;
+                noviIgrac.TrenutniKlub = trenutniKlub;
+                noviIgrac.Pozicija = pozicija;
+                noviIgrac.PripadaReprezentaciji = pripadaReprezentaciji;
+                noviIgrac.SportskaBiografija = sportskaBiografija;
+                noviIgrac.ReprezentativnaKarijera = reprezentativnaKarijera;
+                noviIgrac.Statistika = statistika;
+                noviIgrac.Trofeji = trofeji;
+                collection.InsertOne(noviIgrac);
+
+                
+
             }
             catch (Exception ec)
             {
